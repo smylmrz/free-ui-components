@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.token.class-name,
+.token.function,
+.token.selector,
+.token.selector .class,
+.token.selector.class,
+.token.tag {
+  color: #f472b6;
+}
+
+.token.attr-name,
+.token.important,
+.token.keyword,
+.token.pseudo-class,
+.token.rule {
+  color: #cbd5e1;
+}
+
+.token.attr-equals,
+.token.punctuation {
+  color: #64748b;
+}
+
+.token.attr-value,
+.token.class,
+.token.property,
+.token.string {
+  color: #7dd3fc;
+}
