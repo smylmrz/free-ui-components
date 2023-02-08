@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import ReadyComponent from "./components/ReadyComponent/ReadyComponent.vue";
+import { RouterView } from "vue-router";
 </script>
 
 <template>
-  <ReadyComponent></ReadyComponent>
+  <div class="max-w-7xl mx-auto">
+    <RouterView></RouterView>
+  </div>
 </template>
