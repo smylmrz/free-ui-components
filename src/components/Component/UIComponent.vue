@@ -47,8 +47,7 @@ const copying = () => {
       <Button>
         <Copy
           @click="copying"
-          class="stroke-slate-600"
-          :class="isCopying && 'stroke-blue-500 rotate-6 scale-125'"
+          :class="isCopying && '!stroke-blue-500 rotate-6 scale-125'"
         >
         </Copy>
       </Button>
