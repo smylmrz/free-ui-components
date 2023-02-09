@@ -3,7 +3,7 @@ import { Section } from "../models/Section";
 import { useGroups } from "../store/useGroups";
 import GroupCard from "./GroupCard.vue";
 
-const props = defineProps<{
+defineProps<{
   section: Section;
 }>();
 
