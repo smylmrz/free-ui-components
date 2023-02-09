@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Navlink from "./Navlink.vue";
-import Button from "../Component/Button.vue";
+import Button from "../Component/Btn.vue";
 import Search from "../icons/Search.vue";
 import Logo from "./Logo.vue";
 </script>

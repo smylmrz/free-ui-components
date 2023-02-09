@@ -2,7 +2,7 @@
 import { ref } from "@vue/reactivity";
 import { copy } from "../../utils/copy";
 import { Component } from "../../models/Component";
-import Button from "./Button.vue";
+import Btn from "./Btn.vue";
 import ComponentTitle from "./ComponentTitle.vue";
 import Code from "./Code.vue";
 import CodeIcon from "../icons/Code.vue"
@@ -32,7 +32,7 @@ const copying = () => {
     <ComponentTitle>{{ component.name }}</ComponentTitle>
     <div class="flex gap-5 mb-5">
       <div class="overflow-hidden p-0.5 bg-slate-100 flex rounded-lg">
-        <Button
+        <Btn
           @click="isPreviewing = true"
           :is-active="isPreviewing"
           role="tab"
@@ -41,8 +41,8 @@ const copying = () => {
             <EyeIcon :is-active="slotProps.isActive"/>
           </template>
           Preview
-        </Button>
-        <Button
+        </Btn>
+        <Btn
           @click="isPreviewing = false"
           :is-active="!isPreviewing"
           role="tab"
@@ -51,16 +51,16 @@ const copying = () => {
             <CodeIcon :is-active="slotProps.isActive"/>
           </template>
           View Code
-        </Button>
+        </Btn>
       </div>
-      <Button :is-active="false" class="relative">
+      <Btn :is-active="false" class="relative">
         <Tooltip v-if="isCopying" />
         <CopyIcon
           @click="copying"
           :class="isCopying && '!stroke-sky-500 rotate-6 scale-125'"
         >
         </CopyIcon>
-      </Button>
+      </Btn>
     </div>
   </div>
   <div class="border overflow-hidden border-gray-100 rounded-xl">
