@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Navlink from "./Navlink.vue";
-import Button from "../Component/Btn.vue";
+import Btn from "../Component/Btn.vue";
 import Search from "../icons/Search.vue";
 import Logo from "./Logo.vue";
 </script>
@@ -13,9 +13,9 @@ import Logo from "./Logo.vue";
         <div class="flex items-center gap-8">
           <Navlink to="/components">Components</Navlink>
           <Navlink to="/components">Donate</Navlink>
-          <Button class="!p-0">
+          <Btn :is-active="false" class="!p-0">
             <Search />
-          </Button>
+          </Btn>
         </div>
       </div>
     </div>
