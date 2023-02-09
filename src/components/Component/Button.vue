@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-defineProps<{
-  isActive?: boolean;
-}>();
-
 import { useSlots } from "vue";
+
+defineProps<{
+  isActive: boolean;
+}>();
 const slots = useSlots()
 </script>
 

@@ -53,7 +53,7 @@ const copying = () => {
           View Code
         </Button>
       </div>
-      <Button class="relative">
+      <Button :is-active="false" class="relative">
         <Tooltip v-if="isCopying" />
         <CopyIcon
           @click="copying"
