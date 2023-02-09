@@ -2,7 +2,7 @@
 import { ref } from "@vue/reactivity";
 import { copy } from "../../utils/copy";
 import { Component } from "../../models/Component";
-import Button from "../Button.vue";
+import Button from "./Button.vue";
 import ComponentTitle from "./ComponentTitle.vue";
 import Code from "./Code.vue";
 import Preview from "./Preview.vue";

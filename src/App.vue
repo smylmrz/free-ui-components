@@ -5,7 +5,5 @@ import Header from "./components/Header/Header.vue";
 
 <template>
   <Header />
-  <div class="max-w-7xl mx-auto">
-    <RouterView></RouterView>
-  </div>
+  <RouterView></RouterView>
 </template>
