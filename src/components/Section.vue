@@ -1,11 +1,14 @@
 <script lang="ts" setup>
 import { Section } from "../models/Section";
-import { getGroups } from "../store/groups/getGroups";
+import { useGroups } from "../store/useGroups";
 import GroupCard from "./GroupCard.vue";
 
-defineProps<{
+const props = defineProps<{
   section: Section;
 }>();
+
+const { getGroups } = useGroups()
+
 </script>
 
 <template>

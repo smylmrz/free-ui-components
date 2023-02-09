@@ -1,11 +1,13 @@
 <script lang="ts" setup>
-import { ComponentGroup } from "../models/ComponentGroup";
-import { getComponents } from "../store/components/getComponents";
+import { Group } from "../models/Group";
+import { useComponents } from "../store/useComponents";
 import UIComponent from "./Component/UIComponent.vue";
 
 const props = defineProps<{
-  group: ComponentGroup;
+  group: Group;
 }>();
+
+const { getComponents } = useComponents()
 
 const components = getComponents(props.group.id);
 </script>

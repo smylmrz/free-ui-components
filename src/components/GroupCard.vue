@@ -1,13 +1,15 @@
 <script lang="ts" setup>
-import { ComponentGroup } from "../models/ComponentGroup";
+import { Group } from "../models/Group";
 import { RouterLink } from "vue-router";
-import { computed } from "@vue/runtime-core";
+
+import { useGroups } from "../store/useGroups";
 
 const props = defineProps<{
-  group: ComponentGroup;
+  group: Group;
 }>();
-
-const groupUrl = computed(() => `/elements/${props.group.name.toLowerCase()}`);
+const { generateGroupUrl, getComponentCount } = useGroups()
+const groupUrl = generateGroupUrl(props.group)
+const componentCount = getComponentCount(props.group.id)
 </script>
 
 <template>
@@ -16,9 +18,9 @@ const groupUrl = computed(() => `/elements/${props.group.name.toLowerCase()}`);
     class="hover:bg-gray-50 p-2 block rounded-lg space-y-2"
   >
     <span class="border block rounded-lg overflow-hidden">
-      <img :src="group.previewSource" alt="" />
+      <img :src="group.previewSource" :alt="group.name" />
     </span>
     <h6 class="text-sm text-semibold">{{ group.name }}</h6>
-    <span class="text-xs font-semibold text-slate-500">10 Components</span>
+    <span class="text-xs font-semibold text-slate-500">{{ componentCount }} Components</span>
   </RouterLink>
 </template>

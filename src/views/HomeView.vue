@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import Section from "../components/Section.vue";
-import { groups } from "../store/groups/groups";
-import { sections } from "../store/sections";
+
+import { useSections } from "../store/useSections";
+
+const { sections } = useSections()
 </script>
 
 <template>
