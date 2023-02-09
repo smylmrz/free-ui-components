@@ -23,7 +23,7 @@ export const useProducts = () => {
   const getProduct = (id: number) => {
     return products.value.filter((product) => {
       return product.id === id;
-    });
+    })[0];
   };
 
   return {
