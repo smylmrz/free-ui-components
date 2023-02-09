@@ -7,7 +7,7 @@ const props = defineProps<{
   group: Group;
 }>();
 
-const { getComponents } = useComponents()
+const { getComponents } = useComponents();
 
 const components = getComponents(props.group.id);
 </script>
