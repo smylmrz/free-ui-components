@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 import Navlink from "./Navlink.vue";
 import Button from "../Button.vue";
 import Search from "../icons/Search.vue";
