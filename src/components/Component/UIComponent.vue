@@ -9,9 +9,9 @@ import CodeIcon from "../icons/Code.vue"
 import Preview from "./Preview.vue";
 import CopyIcon from "../icons/Copy.vue";
 import EyeIcon from "../icons/Eye.vue";
-import Tooltip from "./Tooltip.vue";
+import Tooltip from "../Tooltip.vue";
 
-const isPreviewing = ref(false);
+const isPreviewing = ref(true);
 const isCopying = ref(false);
 
 const props = defineProps<{
