@@ -15,11 +15,13 @@ const components = getComponents(props.group.id);
 <template>
   <div>
     <h2 class="text-3xl font-extrabold mb-10">{{ group.name }}</h2>
-    <UIComponent
-      v-for="component in components"
-      :key="component.id"
-      :component="component"
-    >
-    </UIComponent>
+      <div v-if="components.length">
+        <UIComponent
+            v-for="component in components"
+            :key="component.id"
+            :component="component"
+        />
+      </div>
+    <div class="font-semibold text-sm text-gray-500" v-else>This group has no components yet</div>
   </div>
 </template>

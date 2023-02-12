@@ -3,25 +3,13 @@ import { Group } from "../models/Group";
 import { useSections } from "./useSections";
 import { usePackages } from "./usePackages";
 import { useComponents } from "./useComponents";
+import { marketing } from "./groups/marketing";
+import { appUI } from "./groups/appUI";
+import { ecommerce } from "./groups/ecommerce";
 
 export const useGroups = () => {
     const groups = ref<Group[]>([
-        {
-            id: 1,
-            name: "Avatars",
-            slug: "avatars",
-            sectionId: 2,
-            previewSource:
-                "https://tailwindui.com/img/category-thumbnails/application-ui/avatars.png",
-        },
-        {
-            id: 2,
-            name: "Buttons",
-            slug: "buttons",
-            sectionId: 2,
-            previewSource:
-                "https://tailwindui.com/img/category-thumbnails/application-ui/buttons.png",
-        },
+        ...marketing, ...appUI, ...ecommerce
     ])
 
     const getGroup = (id: number) => {
@@ -36,6 +24,12 @@ export const useGroups = () => {
         })[0];
     }
 
+    const getGroupsByPackage = (packageId: number) => {
+        return groups.value.filter(group => {
+            return group.packageId === packageId
+        })
+    }
+
     const getGroups = (sectionId: number) => {
         return groups.value.filter((group) => {
             return group.sectionId === sectionId;
@@ -48,16 +42,16 @@ export const useGroups = () => {
         const { getPackage } = usePackages()
 
         const section = getSection(group.sectionId)
-        const product = getPackage(section.productId)
+        const product = getPackage(section.packageId)
 
         return `/${product.slug}/${section.slug}/${group.slug}`
 
     }
 
-    const getComponentCount = (id: number) => {
+    const getComponentCount = (groupId: number) => {
         const { getComponents } = useComponents()
 
-        return getComponents(id).length
+        return getComponents(groupId).length
     }
 
     return {
@@ -66,6 +60,7 @@ export const useGroups = () => {
         getGroup,
         getGroups,
         generateGroupUrl,
-        getComponentCount
+        getComponentCount,
+        getGroupsByPackage
     }
 }

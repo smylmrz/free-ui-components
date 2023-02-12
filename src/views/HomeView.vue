@@ -1,14 +1,29 @@
 <script lang="ts" setup>
 import CTA from "../components/CTA.vue";
 import Container from "../components/Component/Container.vue";
+import Tab from "../components/Tab.vue";
+import { useTabs } from "../store/useTabs";
+import GroupCard from "../components/GroupCard.vue";
+import { useGroups } from "../store/useGroups";
+import { ref, watchEffect } from "vue";
+import { Section } from "../models/Section";
+import { Group } from "../models/Group";
+
+const { tabs, setCurrentTab, currentTab, isCurrentTab } = useTabs()
+const { getGroupsByPackage } = useGroups()
+
+const groups = ref<Group[]>([])
+
+watchEffect(() => {
+  groups.value = getGroupsByPackage(currentTab.value.id)
+})
 
 </script>
 
 <template>
   <Container>
-    <img class="absolute top-0 left-0" src="https://products.ls.graphics/mesh-gradients/images/49.-Soft-Peach_1.jpg" alt="">
-    <div class="relative mt-20">
-      <div class="relative space-y-8 z-10">
+    <div class="relative">
+      <div class=" flex flex-col items-center text-center relative space-y-8 z-10">
         <h1 class="text-7xl font-extrabold tracking-light">
           Build your next idea <br> even faster.
         </h1>
@@ -17,8 +32,23 @@ import Container from "../components/Component/Container.vue";
         </p>
         <CTA to="/components" type="primary">
           Start exploring
+          <span class="hidden ml-1 text-slate-400 sm:inline">→</span>
         </CTA>
       </div>
+    </div>
+
+    <section class="py-20">
+      <div class="flex gap-5 border-t-2 border-slate-200">
+        <Tab
+            @click="setCurrentTab(tab)"
+            v-for="tab in tabs" :tab="tab" :key="tab.id"
+            :is-active="isCurrentTab(tab)"
+        />
+      </div>
+    </section>
+
+    <div class="grid grid-cols-4 gap-5">
+      <GroupCard v-for="group in groups" :key="group.id" :group="group" />
     </div>
   </Container>
 </template>

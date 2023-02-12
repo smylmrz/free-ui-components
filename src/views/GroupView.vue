@@ -10,8 +10,6 @@ const group = getGroupBySlug(route.params.group as string);
 </script>
 <template>
   <Container>
-    <div class="py-10">
       <ComponentGroup :group="group"></ComponentGroup>
-    </div>
   </Container>
 </template>

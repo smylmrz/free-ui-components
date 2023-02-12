@@ -3,5 +3,6 @@ export interface Group {
   name: string;
   slug: string;
   sectionId: number;
+  packageId: number;
   previewSource: string;
 }

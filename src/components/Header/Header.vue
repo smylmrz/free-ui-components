@@ -6,7 +6,7 @@ import Logo from "./Logo.vue";
 </script>
 
 <template>
-  <header class="relative py-10 z-10">
+  <header class="py-10">
     <div class="max-w-7xl mx-auto">
       <div class="flex items-center justify-between">
         <Logo/>
