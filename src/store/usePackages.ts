@@ -1,8 +1,8 @@
 import { ref } from "vue";
-import { Product } from "../models/Product";
+import { Package } from "../models/Package";
 
-export const useProducts = () => {
-  const products = ref<Product[]>([
+export const usePackages = () => {
+  const packages = ref<Package[]>([
     {
       id: 1,
       name: "Marketing",
@@ -20,14 +20,14 @@ export const useProducts = () => {
     },
   ]);
 
-  const getProduct = (id: number) => {
-    return products.value.filter((product) => {
-      return product.id === id;
+  const getPackage = (id: number) => {
+    return packages.value.filter((p) => {
+      return p.id === id;
     })[0];
   };
 
   return {
-    products,
-    getProduct,
+    packages,
+    getPackage,
   };
 };

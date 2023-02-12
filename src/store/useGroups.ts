@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import { Group } from "../models/Group";
 import { useSections } from "./useSections";
-import { useProducts } from "./useProducts";
+import { usePackages } from "./usePackages";
 import { useComponents } from "./useComponents";
 
 export const useGroups = () => {
@@ -45,10 +45,10 @@ export const useGroups = () => {
     const generateGroupUrl = (group: Group) => {
 
         const { getSection } = useSections()
-        const { getProduct } = useProducts()
+        const { getPackage } = usePackages()
 
         const section = getSection(group.sectionId)
-        const product = getProduct(section.productId)
+        const product = getPackage(section.productId)
 
         return `/${product.slug}/${section.slug}/${group.slug}`
 
