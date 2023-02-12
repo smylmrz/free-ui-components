@@ -14,8 +14,8 @@ const isPrimary = computed(() => props.type === "primary")
   <RouterLink
       :to="to"
       :class="{
-        'inline-flex duration-300 border px-4 py-3 rounded-md font-semibold': true,
-        'bg-gray-900 border-transparent text-white hover:bg-gray-600': isPrimary,
+        'inline-flex text-sm duration-300 border px-5 py-3 rounded-lg font-semibold': true,
+        'bg-gray-900 border-transparent text-white hover:bg-gray-700': isPrimary,
         'bg-slate-50 text-gray-900': !isPrimary,
       }"
   >

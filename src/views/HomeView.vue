@@ -6,9 +6,8 @@ import Container from "../components/Component/Container.vue";
 
 <template>
   <Container>
-    <img class="absolute top-0 left-0" src="https://products.ls.graphics/mesh-gradients/images/49.-Soft-Peach_1.jpg" alt="">
     <div class="relative">
-      <div class="relative space-y-8 z-10">
+      <div class=" flex flex-col items-center text-center relative space-y-8 z-10">
         <h1 class="text-7xl font-extrabold tracking-light">
           Build your next idea <br> even faster.
         </h1>
@@ -17,6 +16,7 @@ import Container from "../components/Component/Container.vue";
         </p>
         <CTA to="/components" type="primary">
           Start exploring
+          <span class="hidden ml-1 text-slate-400 sm:inline">→</span>
         </CTA>
       </div>
     </div>
