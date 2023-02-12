@@ -1,6 +1,5 @@
 <script setup lang="ts">
-
-import Tab from "./Tab.vue";
+import { Tab } from "../models/Tab";
 
 defineProps<{
   tab: Tab;
