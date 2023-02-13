@@ -4,21 +4,23 @@ import { Package } from "../models/Package";
 import Category from "./Category.vue";
 
 const props = defineProps<{
-  package: Package
+  pckg: Package
 }>()
 
 const { getCategories } = useCategories()
 
-const categories = getCategories(props.package.id)
+const categories = getCategories(props.pckg.id)
 </script>
 
 <template>
   <div>
     <div class="border-b space-y-4 border-slate-100 py-10">
       <h2 class="text-2xl font-semibold">
-        {{ package.name }}
+        {{ pckg.name }}
       </h2>
-      <p class="text-sm text-slate-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, ipsam!</p>
+      <p class="text-sm text-slate-500">
+        {{ pckg.description }}
+      </p>
     </div>
     <Category
         v-for="category in categories"

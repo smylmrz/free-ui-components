@@ -8,6 +8,6 @@ const { packages } = usePackages()
 
 <template>
   <Container>
-    <Package v-for="pckg in packages" :key="pckg.id" :package="pckg"/>
+    <Package v-for="pckg in packages" :key="pckg.id" :pckg="pckg"/>
   </Container>
 </template>
