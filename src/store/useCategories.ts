@@ -1,8 +1,8 @@
 import { ref } from "vue";
-import { Section } from "../models/Section";
+import { Category } from "../models/Category";
 
-export const useSections = () => {
-    const sections = ref<Section[]>([
+export const useCategories = () => {
+    const categories = ref<Category[]>([
         {
             id: 1,
             name: "Page Sections",
@@ -29,21 +29,21 @@ export const useSections = () => {
         },
     ])
 
-    const getSection = (id: number) => {
-        return sections.value.filter(section => {
-            return section.id === id
+    const getCategory = (id: number) => {
+        return categories.value.filter(category => {
+            return category.id === id
         })[0]
     }
 
-    const getSections = (packageId: number) => {
-        return sections.value.filter(section => {
-            return section.packageId === packageId
+    const getCategories = (packageId: number) => {
+        return categories.value.filter(category => {
+            return category.packageId === packageId
         })
     }
 
     return {
-        sections,
-        getSection,
-        getSections
+        categories,
+        getCategory,
+        getCategories
     }
 }

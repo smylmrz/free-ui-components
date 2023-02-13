@@ -1,4 +1,4 @@
-export interface Section {
+export interface Category {
   id: number;
   name: string;
   slug: string;

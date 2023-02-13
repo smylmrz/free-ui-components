@@ -1,6 +1,6 @@
 import { ref } from "vue";
 import { Group } from "../models/Group";
-import { useSections } from "./useSections";
+import { useCategories } from "./useCategories";
 import { usePackages } from "./usePackages";
 import { useComponents } from "./useComponents";
 import { marketing } from "./groups/marketing";
@@ -32,19 +32,19 @@ export const useGroups = () => {
 
     const getGroups = (sectionId: number) => {
         return groups.value.filter((group) => {
-            return group.sectionId === sectionId;
+            return group.categoryId === sectionId;
         });
     }
 
     const generateGroupUrl = (group: Group) => {
 
-        const { getSection } = useSections()
+        const { getCategory } = useCategories()
         const { getPackage } = usePackages()
 
-        const section = getSection(group.sectionId)
-        const product = getPackage(section.packageId)
+        const category = getCategory(group.categoryId)
+        const product = getPackage(category.packageId)
 
-        return `/${product.slug}/${section.slug}/${group.slug}`
+        return `/${product.slug}/${category.slug}/${group.slug}`
 
     }
 

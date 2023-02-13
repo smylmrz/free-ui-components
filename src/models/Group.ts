@@ -2,7 +2,7 @@ export interface Group {
   id: number;
   name: string;
   slug: string;
-  sectionId: number;
+  categoryId: number;
   packageId: number;
   previewSource: string;
 }

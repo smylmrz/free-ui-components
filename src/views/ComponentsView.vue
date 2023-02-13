@@ -1,17 +1,17 @@
 <script lang="ts" setup>
-import { useSections } from "../store/useSections";
-import Section from "../components/Section.vue";
+import { useCategories } from "../store/useCategories";
+import Category from "../components/Category.vue";
 import Container from "../components/Component/Container.vue";
 
-const { sections } = useSections();
+const { categories } = useCategories();
 </script>
 
 <template>
   <Container>
-    <Section
-      v-for="section in sections"
-      :key="section.id"
-      :section="section"
-    ></Section>
+    <Category
+      v-for="category in categories"
+      :key="category.id"
+      :category="category"
+    />
   </Container>
 </template>

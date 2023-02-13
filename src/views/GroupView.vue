@@ -10,6 +10,6 @@ const group = getGroupBySlug(route.params.group as string);
 </script>
 <template>
   <Container>
-      <ComponentGroup :group="group"></ComponentGroup>
+      <ComponentGroup :group="group" />
   </Container>
 </template>

@@ -1,13 +1,12 @@
 <script lang="ts" setup>
+import { useTabs } from "../store/useTabs";
+import { useGroups } from "../store/useGroups";
+import { ref, watchEffect } from "vue";
+import { Group } from "../models/Group";
 import CTA from "../components/CTA.vue";
 import Container from "../components/Component/Container.vue";
 import Tab from "../components/Tab.vue";
-import { useTabs } from "../store/useTabs";
 import GroupCard from "../components/GroupCard.vue";
-import { useGroups } from "../store/useGroups";
-import { ref, watchEffect } from "vue";
-import { Section } from "../models/Section";
-import { Group } from "../models/Group";
 
 const { tabs, setCurrentTab, currentTab, isCurrentTab } = useTabs()
 const { getGroupsByPackage } = useGroups()
@@ -37,7 +36,7 @@ watchEffect(() => {
       </div>
     </div>
 
-    <section class="py-20">
+    <div class="py-20">
       <div class="flex gap-5 border-t-2 border-slate-200">
         <Tab
             @click="setCurrentTab(tab)"
@@ -45,7 +44,7 @@ watchEffect(() => {
             :is-active="isCurrentTab(tab)"
         />
       </div>
-    </section>
+    </div>
 
     <div class="grid grid-cols-4 gap-5">
       <GroupCard v-for="group in groups" :key="group.id" :group="group" />
