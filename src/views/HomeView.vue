@@ -14,7 +14,7 @@ const { getGroupsByPackage } = useGroups()
 const groups = ref<Group[]>([])
 
 watchEffect(() => {
-  groups.value = getGroupsByPackage(currentTab.value.id)
+  groups.value = getGroupsByPackage(currentTab.value.id).slice(0, 12)
 })
 
 </script>
@@ -48,6 +48,10 @@ watchEffect(() => {
 
     <div class="grid grid-cols-4 gap-5">
       <GroupCard v-for="group in groups" :key="group.id" :group="group" />
+    </div>
+
+    <div class="max-w-fit mt-10 mx-auto">
+      <CTA type="primary" :to="`/${currentTab.slug}/${currentTab.id}`">Show all</CTA>
     </div>
   </Container>
 </template>

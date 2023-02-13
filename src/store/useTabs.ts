@@ -7,16 +7,19 @@ export const useTabs = () => {
         {
             id: 1,
             title: 'Application UI',
+            slug: 'application-ui',
             body: 'Form layouts, tables, modal dialogs — everything you need to build beautiful responsive web applications.'
         },
         {
             id: 2,
             title: 'Marketing',
+            slug: 'marketing',
             body: 'Heroes, feature sections, newsletter sign up forms — everything you need to build beautiful marketing websites.'
         },
         {
             id: 3,
             title: 'Ecommerce',
+            slug: 'ecommerce',
             body: 'Checkout forms, shopping carts, product views — everything you need to build your next ecommerce front-end.'
         },
     ])
