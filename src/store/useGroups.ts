@@ -42,9 +42,9 @@ export const useGroups = () => {
         const { getPackage } = usePackages()
 
         const category = getCategory(group.categoryId)
-        const product = getPackage(category.packageId)
+        const pckg = getPackage(category.packageId)
 
-        return `/${product.slug}/${category.slug}/${group.slug}`
+        return `/${pckg.slug}/${category.slug}/${group.slug}`
 
     }
 

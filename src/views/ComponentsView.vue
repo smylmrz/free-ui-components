@@ -1,17 +1,13 @@
 <script lang="ts" setup>
-import { useCategories } from "../store/useCategories";
-import Category from "../components/Category.vue";
 import Container from "../components/Component/Container.vue";
+import Package from "../components/Package.vue";
+import { usePackages } from "../store/usePackages";
 
-const { categories } = useCategories();
+const { packages } = usePackages()
 </script>
 
 <template>
   <Container>
-    <Category
-      v-for="category in categories"
-      :key="category.id"
-      :category="category"
-    />
+    <Package v-for="pckg in packages" :key="pckg.id" :package="pckg"/>
   </Container>
 </template>

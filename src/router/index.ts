@@ -12,7 +12,7 @@ export const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/:product/:category/:group",
+      path: "/:package/:category/:group",
       name: "group",
       component: GroupView,
     },

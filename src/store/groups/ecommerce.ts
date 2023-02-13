@@ -1,18 +1,20 @@
-export const ecommerce = [
+import { Group } from "../../models/Group";
+
+export const ecommerce = <Group[]>[
     {
-        id: 1,
+        id: 70,
         name: "Product Overviews",
         slug: "product-overviews",
-        categoryId: 1,
+        categoryId: 16,
         packageId: 3,
         previewSource:
             "https://tailwindui.com/img/category-thumbnails/ecommerce/product-overviews.png",
     },
     {
-        id: 2,
+        id: 71,
         name: "Product Lists",
         slug: "product-lists",
-        categoryId: 1,
+        categoryId: 16,
         packageId: 3,
         previewSource:
             "https://tailwindui.com/img/category-thumbnails/ecommerce/product-lists.png",

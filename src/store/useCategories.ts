@@ -1,32 +1,12 @@
 import { ref } from "vue";
 import { Category } from "../models/Category";
+import { marketing } from "./categories/marketing";
+import { appUI } from "./categories/appUI";
+import { ecommerce } from "./categories/ecommerce";
 
 export const useCategories = () => {
     const categories = ref<Category[]>([
-        {
-            id: 1,
-            name: "Page Sections",
-            slug: "page-sections",
-            packageId: 1
-        },
-        {
-            id: 2,
-            name: "Elements",
-            slug: "elements",
-            packageId: 1
-        },
-        {
-            id: 3,
-            name: "Feedback",
-            slug: "feedback",
-            packageId: 1
-        },
-        {
-            id: 4,
-            name: "Page examples",
-            slug: "page-examples",
-            packageId: 1
-        },
+        ...marketing, ...appUI, ...ecommerce
     ])
 
     const getCategory = (id: number) => {
