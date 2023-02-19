@@ -15,7 +15,7 @@ const components = getComponents(props.group.id);
 <template>
   <div>
     <h2 class="text-3xl font-extrabold mb-10">{{ group.name }}</h2>
-      <div v-if="components.length">
+      <div class="space-y-20" v-if="components.length">
         <UIComponent
             v-for="component in components"
             :key="component.id"

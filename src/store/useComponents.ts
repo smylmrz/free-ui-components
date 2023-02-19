@@ -1,10 +1,11 @@
 import { ref } from "vue";
 import { Component } from "../models/Component";
-import { circularAvatars } from "./components/circularAvatars/circularAvatars";
+import { circularAvatar } from "./components/circular-avatar/circularAvatar";
+import { stackedAvatars } from "./components/stacked-avatars/stackedAvatars";
 
 export const useComponents = () => {
     const components = ref<Component[]>([
-        circularAvatars
+        stackedAvatars, circularAvatar
     ])
 
     const getComponents = (groupId: number) => {
@@ -18,3 +19,5 @@ export const useComponents = () => {
         getComponents
     }
 }
+
+//todo: generate preview code automatically
