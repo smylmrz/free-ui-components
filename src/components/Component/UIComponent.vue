@@ -73,13 +73,6 @@ const copying = () => {
 
 <!--  <div class="flex justify-center gap-10 items-center rounded-lg border p-10">-->
 
-<!--    <div class="flex -space-x-2 overflow-hidden">-->
-<!--      <img class="inline-block h-20  w-20 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="">-->
-<!--      <img class="inline-block h-20  w-20 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="">-->
-<!--      <img class="inline-block h-20  w-20 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="">-->
-<!--      <img class="inline-block h-20  w-20 rounded-full ring-2 ring-white" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="">-->
-<!--    </div>-->
-
 <!--  </div>-->
 </template>
 
