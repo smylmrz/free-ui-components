@@ -23,7 +23,7 @@ export const router = createRouter({
       component: PackageView,
     },
     {
-      path: "/preview-images",
+      path: "/components",
       name: "components",
       component: ComponentsView,
     },

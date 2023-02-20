@@ -65,16 +65,16 @@ const copying = () => {
       </div>
     </div>
     <div class="border overflow-hidden border-gray-100 rounded-xl">
-      <Preview v-if="isPreviewing" :src="component.previewSource"></Preview>
-      <Code :code="component.previewCode" v-else> </Code>
+      <Preview v-if="isPreviewing" :src="component.previewSource"/>
+      <Code :code="component.previewCode" v-else/>
     </div>
 
   </div>
 
 <!--  <div class="flex justify-center gap-10 items-center rounded-lg border p-10">-->
-<!--    <div class="text-3xl bg-slate-800 text-white h-20 w-20 rounded-full flex items-center justify-center">-->
-<!--      MI-->
-<!--    </div>-->
+<!--    <button class="rounded-md bg-red-100 hover:bg-red-200 text-red-500 px-6 py-3">-->
+<!--      Button text-->
+<!--    </button>-->
 <!--  </div>-->
 </template>
 
