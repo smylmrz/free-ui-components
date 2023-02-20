@@ -7,7 +7,7 @@ export const roundedAvatar = <Component>{
   id: 3,
   name: "Rounded Avatar",
   groupId: 57,
-  previewSource: '/src/assets/components/rounded-avatar.png',
+  previewSource: '/public/preview-images/rounded-avatar.png',
   previewCode,
   sourceCode,
 };

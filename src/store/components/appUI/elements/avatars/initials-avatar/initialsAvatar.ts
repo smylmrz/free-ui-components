@@ -7,7 +7,7 @@ export const initialsAvatar = <Component>{
   id: 4,
   name: "Circular Avatar with Initials",
   groupId: 57,
-  previewSource: '/src/assets/components/initials-avatar.png',
+  previewSource: '/public/preview-images/initials-avatar.png',
   previewCode,
   sourceCode,
 };

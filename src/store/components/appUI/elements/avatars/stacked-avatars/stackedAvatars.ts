@@ -6,7 +6,7 @@ export const stackedAvatars = <Component>{
     id: 1,
     name: "Stacked Avatars",
     groupId: 57,
-    previewSource: '/src/assets/components/stacked-avatars.png',
+    previewSource: '/public/preview-images/stacked-avatars.png',
     previewCode,
     sourceCode,
 };
