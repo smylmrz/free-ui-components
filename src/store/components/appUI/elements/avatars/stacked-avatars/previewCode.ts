@@ -1,5 +1,5 @@
 import { src } from "./src";
-import { generatePreviewCode } from "../../../utils/generatePreviewCode";
+import { generatePreviewCode } from "../../../../../../utils/generatePreviewCode";
 
 const { openTag, closeTag, attributeWithValues, closer } = generatePreviewCode()
 

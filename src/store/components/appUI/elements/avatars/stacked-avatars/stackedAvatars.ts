@@ -1,6 +1,6 @@
 import { previewCode } from "./previewCode";
 import { sourceCode } from "./sourceCode";
-import { Component } from "../../../models/Component";
+import { Component } from "../../../../../../models/Component";
 
 export const stackedAvatars = <Component>{
     id: 1,

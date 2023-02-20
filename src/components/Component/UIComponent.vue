@@ -72,7 +72,9 @@ const copying = () => {
   </div>
 
 <!--  <div class="flex justify-center gap-10 items-center rounded-lg border p-10">-->
-
+<!--    <div class="text-3xl bg-slate-800 text-white h-20 w-20 rounded-full flex items-center justify-center">-->
+<!--      MI-->
+<!--    </div>-->
 <!--  </div>-->
 </template>
 
