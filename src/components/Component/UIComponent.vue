@@ -11,7 +11,7 @@ import CopyIcon from "../icons/Copy.vue";
 import EyeIcon from "../icons/Eye.vue";
 import Tooltip from "../Tooltip.vue";
 
-const isPreviewing = ref(false);
+const isPreviewing = ref(true);
 const isCopying = ref(false);
 
 const props = defineProps<{
@@ -70,6 +70,7 @@ const copying = () => {
     </div>
 
   </div>
+
 <!--  <div class="flex justify-center gap-10 items-center rounded-lg border p-10">-->
 
 <!--    <div class="flex -space-x-2 overflow-hidden">-->

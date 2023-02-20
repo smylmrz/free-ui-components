@@ -1,5 +1,8 @@
 import { src } from "./src";
+import { generatePreviewCode } from "../../../utils/generatePreviewCode";
 
-export const previewCode = `<span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex overflow-hidden<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inline-block h-20 w-20 rounded-full ring-2 ring-white<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>${src}<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>`;
+const { openTag, closeTag, attributeWithValues, closer } = generatePreviewCode()
+
+export const previewCode = `${openTag('div')} ${attributeWithValues('class', 'flex overflow-hidden')}${closer()}
+  ${openTag('img')} ${attributeWithValues('class', 'inline-block h-20 w-20 rounded-full ring-2 ring-white')} ${attributeWithValues('class', src)} ${attributeWithValues('atl', '')}${closer()}
+${closeTag('div')}`;
