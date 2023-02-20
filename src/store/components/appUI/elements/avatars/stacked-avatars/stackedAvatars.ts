@@ -1,12 +1,13 @@
 import { previewCode } from "./previewCode";
 import { sourceCode } from "./sourceCode";
 import { Component } from "../../../../../../models/Component";
+import { imagePrefix } from "../../../../../../utils/imagePrefix";
 
 export const stackedAvatars = <Component>{
     id: 1,
     name: "Stacked Avatars",
     groupId: 57,
-    previewSource: '/public/preview-images/stacked-avatars.png',
+    previewSource: `${imagePrefix()}stacked-avatars.png`,
     previewCode,
     sourceCode,
 };
