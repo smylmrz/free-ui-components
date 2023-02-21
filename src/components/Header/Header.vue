@@ -3,6 +3,8 @@ import Navlink from "./Navlink.vue";
 import Btn from "../Component/Btn.vue";
 import Search from "../icons/Search.vue";
 import Logo from "./Logo.vue";
+
+const emit = defineEmits<{(e: 'search'): void}>()
 </script>
 
 <template>
@@ -14,7 +16,7 @@ import Logo from "./Logo.vue";
           <Navlink to="/components">Components</Navlink>
           <Navlink to="/components">Donate</Navlink>
           <Btn :is-active="false" class="!p-0">
-            <Search />
+            <Search @click="emit('search')" />
           </Btn>
         </div>
       </div>

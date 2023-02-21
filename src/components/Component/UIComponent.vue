@@ -65,8 +65,8 @@ const copying = () => {
       </div>
     </div>
     <div class="border overflow-hidden border-gray-100 rounded-xl">
-      <Preview v-if="isPreviewing" :src="component.previewSource"/>
-      <Code :code="component.previewCode" v-else/>
+      <Preview v-if="isPreviewing" :src="component.previewSource" />
+      <Code :code="component.previewCode" v-else />
     </div>
 
   </div>
