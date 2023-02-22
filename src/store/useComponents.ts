@@ -6,10 +6,11 @@ import { roundedAvatar } from "./components/appUI/elements/avatars/rounded-avata
 import { initialsAvatar } from "./components/appUI/elements/avatars/initials-avatar/initialsAvatar";
 import { primaryButton } from "./components/appUI/elements/buttons/primary-button/primaryButton";
 import { secondaryButton } from "./components/appUI/elements/buttons/seondary-button/secondaryButton";
+import { inputWithLabel } from "./components/appUI/forms/input-groups/input-group-with-label/inputWithLabel";
 
 export const useComponents = () => {
     const components = ref<Component[]>([
-        stackedAvatars, circularAvatar, roundedAvatar, initialsAvatar, primaryButton, secondaryButton
+        stackedAvatars, circularAvatar, roundedAvatar, initialsAvatar, primaryButton, secondaryButton, inputWithLabel
     ])
 
     const getComponents = (groupId: number) => {

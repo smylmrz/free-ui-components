@@ -72,9 +72,7 @@ const copying = () => {
   </div>
 
 <!--  <div class="flex justify-center gap-10 items-center rounded-lg border p-10">-->
-<!--    <button class="rounded-md bg-red-100 hover:bg-red-200 text-red-500 px-6 py-3">-->
-<!--      Button text-->
-<!--    </button>-->
+
 <!--  </div>-->
 </template>
 
