@@ -7,13 +7,13 @@
       :initial-focus="null"
   >
 
-    <div class="fixed inset-0 bg-white/30 backdrop-blur" />
+    <div class="fixed inset-0 bg-gray-500/50 backdrop-blur" />
 
-    <DialogPanel>
-      <div class="fixed flex items-start justify-center inset-0 min-h-full">
+    <div class="fixed inset-0 min-h-full">
+      <DialogPanel>
         <slot></slot>
-      </div>
-    </DialogPanel>
+      </DialogPanel>
+    </div>
 
   </Dialog>
 </template>

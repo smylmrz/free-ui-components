@@ -8,13 +8,13 @@ const props = defineProps<{
   group: Group;
 }>();
 const { generateGroupUrl, getComponentCount } = useGroups()
-const groupUrl = generateGroupUrl(props.group)
+const { url } = generateGroupUrl(props.group)
 const componentCount = getComponentCount(props.group.id)
 </script>
 
 <template>
   <RouterLink
-    :to="groupUrl"
+    :to="url"
     class="hover:bg-gray-50 p-2 block rounded-lg space-y-2"
   >
     <span class="border block rounded-lg overflow-hidden">
