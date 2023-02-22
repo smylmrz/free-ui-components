@@ -6,10 +6,10 @@ import Btn from "./Btn.vue";
 import ComponentTitle from "./ComponentTitle.vue";
 import Code from "./Code.vue";
 import CodeIcon from "../icons/Code.vue"
-import Preview from "./Preview.vue";
 import CopyIcon from "../icons/Copy.vue";
 import EyeIcon from "../icons/Eye.vue";
 import Tooltip from "../Tooltip.vue";
+import CodePreview from "./CodePreview.vue";
 
 const isPreviewing = ref(true);
 const isCopying = ref(false);
@@ -65,19 +65,11 @@ const copying = () => {
       </div>
     </div>
     <div class="border overflow-hidden border-gray-100 rounded-xl">
-      <Preview v-if="isPreviewing" :src="component.previewSource" />
+      <CodePreview v-if="isPreviewing" :source-code="component.sourceCode"/>
       <Code :code="component.previewCode" v-else />
     </div>
 
   </div>
-
-<!--  <div class="flex justify-center gap-10 items-center rounded-lg border p-10">-->
-<!--  <div class="space-y-1">-->
-<!--    <label class="block text-sm text-gray-700 font-medium" for="email">Email</label>-->
-<!--    <input id="email" type="email" class="block w-full border rounded-md px-2 py-1 focus:outline-sky-500" placeholder="you@example.com">-->
-<!--    <p class="text-xs text-gray-400">Will be used to contact you.</p>-->
-<!--  </div>-->
-<!--  </div>-->
 </template>
 
 

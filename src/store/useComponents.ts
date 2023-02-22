@@ -5,7 +5,7 @@ import { stackedAvatars } from "./components/appUI/elements/avatars/stacked-avat
 import { roundedAvatar } from "./components/appUI/elements/avatars/rounded-avatar/roundedAvatar";
 import { initialsAvatar } from "./components/appUI/elements/avatars/initials-avatar/initialsAvatar";
 import { primaryButton } from "./components/appUI/elements/buttons/primary-button/primaryButton";
-import { secondaryButton } from "./components/appUI/elements/buttons/seondary-button/secondaryButton";
+import { secondaryButton } from "./components/appUI/elements/buttons/secondary-button/secondaryButton";
 import { inputWithLabel } from "./components/appUI/forms/input-groups/input-group-with-label/inputWithLabel";
 import {
     inputWithLabelAndHelperText
