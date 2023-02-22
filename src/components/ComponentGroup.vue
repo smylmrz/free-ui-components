@@ -2,6 +2,7 @@
 import { Group } from "../models/Group";
 import { useComponents } from "../store/useComponents";
 import UIComponent from "./Component/UIComponent.vue";
+import { ref, watchEffect } from "vue";
 
 const props = defineProps<{
   group: Group;
@@ -9,7 +10,11 @@ const props = defineProps<{
 
 const { getComponents } = useComponents();
 
-const components = getComponents(props.group.id);
+const components = ref(getComponents(props.group.id));
+
+watchEffect(() => {
+  components.value = getComponents(props.group.id);
+})
 </script>
 
 <template>

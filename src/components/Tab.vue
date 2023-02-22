@@ -10,7 +10,7 @@ defineProps<{
 
 <template>
     <div
-        class="-mt-0.5 cursor-pointer border-t-2 border-gray-200 pt-10"
+        class="duration-300 -mt-0.5 cursor-pointer border-t-2 border-gray-200 pt-10"
         :class="isActive && '!border-sky-500'"
     >
       <h3 class="font-semibold"
