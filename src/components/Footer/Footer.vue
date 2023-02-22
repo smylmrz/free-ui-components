@@ -5,7 +5,7 @@ import Container from "../Component/Container.vue";
 
 <template>
   <Container>
-    <div class="flex pb-20 flex-col items-center justify-center gap-5">
+    <div class="flex border-t border-gray-100 py-20 flex-col items-center justify-center gap-5">
       <Logo />
       <p class="text-sm text-gray-600">&copy; 2023 UILand. All rights reserved.</p>
     </div>
