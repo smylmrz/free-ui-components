@@ -24,6 +24,12 @@ export const useGroups = () => {
         })[0];
     }
 
+    const filterGroups = (name: string) => {
+        return groups.value.filter((group) => {
+            return group.name.toLowerCase().includes(name);
+        })
+    }
+
     const getGroupsByPackage = (packageId: number) => {
         return groups.value.filter(group => {
             return group.packageId === packageId
@@ -44,7 +50,11 @@ export const useGroups = () => {
         const category = getCategory(group.categoryId)
         const pckg = getPackage(category.packageId)
 
-        return `/${pckg.slug}/${category.slug}/${group.slug}`
+        return {
+            pckg: pckg.name,
+            category: category.name,
+            url: `/${pckg.slug}/${category.slug}/${group.slug}`
+        }
 
     }
 
@@ -61,6 +71,7 @@ export const useGroups = () => {
         getGroups,
         generateGroupUrl,
         getComponentCount,
-        getGroupsByPackage
+        getGroupsByPackage,
+        filterGroups
     }
 }
