@@ -10,10 +10,19 @@ import { inputWithLabel } from "./components/appUI/forms/input-groups/input-grou
 import {
     inputWithLabelAndHelperText
 } from "./components/appUI/forms/input-groups/input-group-with-label-and-helper-text/inputWithLabelAndHelperText";
+import { alertWithDescription } from "./components/appUI/feedback/alerts/alert-with-description";
 
 export const useComponents = () => {
     const components = ref<Component[]>([
-        stackedAvatars, circularAvatar, roundedAvatar, initialsAvatar, primaryButton, secondaryButton, inputWithLabel, inputWithLabelAndHelperText
+        stackedAvatars,
+        circularAvatar,
+        roundedAvatar,
+        initialsAvatar,
+        primaryButton,
+        secondaryButton,
+        inputWithLabel,
+        inputWithLabelAndHelperText,
+        alertWithDescription
     ])
 
     const getComponents = (groupId: number) => {
