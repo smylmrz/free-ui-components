@@ -24,7 +24,7 @@ const hasNoResults = computed(() => key.value && groups.value.length === 0)
 
 <template>
   <Modal @close="closeSearch" :is-open="isSearchOpen">
-    <div class="w-1/4 mx-auto mt-40">
+    <div class="w-1/2 lg:w-1/4 mx-auto mt-40">
       <div
           class="flex items-center  p-4 justify-between bg-white border rounded-lg"
           :class="hasResults && 'rounded-b-none'"
@@ -40,7 +40,7 @@ const hasNoResults = computed(() => key.value && groups.value.length === 0)
           <h6 class="font-bold">
             No results found
           </h6>
-          <p class="text-slate-500 text-sm text-center">
+          <p class="text-slate-500 w-2/3 text-xs text-center">
             We can’t find anything with that term at the moment, try searching something else.
           </p>
         </div>
@@ -48,7 +48,7 @@ const hasNoResults = computed(() => key.value && groups.value.length === 0)
     </div>
   </Modal>
   <Header @search="isSearchOpen = true" class="relative z-10" />
-  <div class="py-20">
+  <div class="py-10 md:py-20">
     <RouterView />
   </div>
   <Footer class="relative z-10" />

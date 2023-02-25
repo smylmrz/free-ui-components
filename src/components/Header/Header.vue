@@ -3,13 +3,14 @@ import Navlink from "./Navlink.vue";
 import Btn from "../Component/Btn.vue";
 import Search from "../icons/Search.vue";
 import Logo from "./Logo.vue";
+import Container from "../Component/Container.vue";
 
 const emit = defineEmits<{(e: 'search'): void}>()
 </script>
 
 <template>
   <header class="py-10">
-    <div class="max-w-7xl mx-auto">
+    <Container>
       <div class="flex items-center justify-between">
         <Logo/>
         <div class="flex items-center gap-8">
@@ -20,6 +21,6 @@ const emit = defineEmits<{(e: 'search'): void}>()
           </Btn>
         </div>
       </div>
-    </div>
+    </Container>
   </header>
 </template>
