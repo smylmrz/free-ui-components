@@ -1,21 +1,67 @@
 <template>
    <Container>
-    <div class="bg-slate-100 rounded-md border py-3 mb-3">{{ generatedPassword }}</div>
-    <button @click="generatePassword" class="px-4 py-2 bg-gray-900 text-white rounded-md">Generate Password</button>
+    <div class="w-1/2 mx-auto mb-3">
+      <div class="flex">
+        <div class="w-full bg-slate-100 rounded-md relative p-3">
+          {{ generatedPassword }}
+        </div>
+        <Btn :is-active="false" class="relative">
+          <Tooltip v-if="isCopying" />
+          <CopyIcon
+              @click="copyPassword"
+              :class="isCopying && '!stroke-sky-500 rotate-6 scale-125'"
+          >
+          </CopyIcon>
+        </Btn>
+      </div>
+      <div class="space-y-3 my-5">
+        <div>
+          <label class="flex gap-2">
+            <input v-model="includeUppercase" type="checkbox">
+            <span>Uppercase</span>
+          </label>
+        </div>
+        <div>
+          <label class="flex gap-2">
+            <input v-model="includeNumbers" type="checkbox">
+            <span>Numbers</span>
+          </label>
+        </div>
+        <div>
+          <label class="flex gap-2">
+            <input v-model="includeSymbols" type="checkbox">
+            <span>Symbols</span>
+          </label>
+        </div>
+        <div>
+          <div>Password Length</div>
+          <div class="flex gap-5">
+            <input @input="passwordLength = $event.target?.value" class="w-full" v-model="passwordLength" type="range" min="6" max="32">
+            <input @input="passwordLength = $event.target?.value" class="w-12 text-center border rounded-md max-w-fit w-fit flex" v-model="passwordLength" type="number" min="6" max="32">
+          </div>
+        </div>
+      </div>
+      <button @click="generatePassword" class="px-4 py-2 bg-gray-900 text-white rounded-md">Generate Password</button>
+    </div>
    </Container>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import { useCopyToClipBoard } from "../utils/copy"
 import Container from '../components/Component/Container.vue';
-import CTA from '../components/CTA.vue';
+import CopyIcon from '../components/icons/Copy.vue';
+import Btn from '../components/Component/Btn.vue';
+import Tooltip from '../components/Tooltip.vue';
+
+const { isCopying, copy } = useCopyToClipBoard()
 
 const generatedPassword = ref('')
 
-const passwordLength = ref(20)
+const passwordLength = ref(10)
 const includeUppercase = ref(false)
-const includeNumbers = ref(true)
-const includeSymbols = ref(true)
+const includeNumbers = ref(false)
+const includeSymbols = ref(false)
 
 const generatePassword = () => {
   // reset password
@@ -50,5 +96,9 @@ const generatePassword = () => {
     generatedPassword.value += baseChars[randomIndex];
   }
 }
+
+generatePassword()
+
+const copyPassword = () => copy(generatedPassword.value)
 
 </script>
