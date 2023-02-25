@@ -24,7 +24,7 @@ const hasNoResults = computed(() => key.value && groups.value.length === 0)
 
 <template>
   <Modal @close="closeSearch" :is-open="isSearchOpen">
-    <div class="w-1/2 lg:w-1/4 mx-auto mt-40">
+    <div class="w-full px-10 sm:px-0 sm:w-2/3 md:w-1/2 lg:w-1/4 mx-auto mt-40">
       <div
           class="flex items-center  p-4 justify-between bg-white border rounded-lg"
           :class="hasResults && 'rounded-b-none'"
