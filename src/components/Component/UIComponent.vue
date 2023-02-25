@@ -29,9 +29,9 @@ const copying = () => {
 
 <template>
   <div>
-    <div class="flex items-center justify-between">
+    <div class="flex mb-5 items-center justify-between">
       <ComponentTitle>{{ component.name }}</ComponentTitle>
-      <div class="flex gap-5 mb-5">
+      <div class="flex gap-2 md:gap-5">
         <div class="overflow-hidden p-0.5 bg-slate-100 flex rounded-lg">
           <Btn
               @click="isPreviewing = true"
@@ -41,7 +41,9 @@ const copying = () => {
             <template #icon="slotProps">
               <EyeIcon :is-active="slotProps.isActive"/>
             </template>
-            Preview
+            <span class="hidden sm:block">
+              Preview
+            </span>
           </Btn>
           <Btn
               @click="isPreviewing = false"
@@ -51,7 +53,9 @@ const copying = () => {
             <template #icon="slotProps">
               <CodeIcon :is-active="slotProps.isActive"/>
             </template>
-            View Code
+            <span class="hidden sm:block">
+              View Code
+            </span>
           </Btn>
         </div>
         <Btn :is-active="false" class="relative">

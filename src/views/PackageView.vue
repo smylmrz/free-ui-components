@@ -26,7 +26,7 @@ const groups = getGroupsByPackage(pckg.id)
         {{ pckg.description }}
       </p>
     </div>
-    <div class="grid grid-cols-4 gap-5">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
       <GroupCard v-for="group in groups" :key="group.id" :group="group" />
     </div>
   </Container>

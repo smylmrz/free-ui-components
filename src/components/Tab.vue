@@ -10,7 +10,7 @@ defineProps<{
 
 <template>
     <div
-        class="duration-300 -mt-0.5 cursor-pointer border-t-2 border-gray-200 pt-10"
+        class="pt-5 md:pt-10 w-full duration-300 -mt-0.5 cursor-pointer border-t-2 border-gray-200"
         :class="isActive && '!border-sky-500'"
     >
       <h3 class="font-semibold"
@@ -22,7 +22,7 @@ defineProps<{
           </span>
         </button>
       </h3>
-      <p class="mt-2 hidden text-sm leading-6 text-slate-700 md:block pr-10">
+      <p class="pr-5 md:pr-10 mt-2 text-xs md:text-sm sm:leading-10 text-slate-700">
         {{ tab.body }}
       </p>
     </div>
