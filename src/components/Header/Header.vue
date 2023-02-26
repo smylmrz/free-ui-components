@@ -15,6 +15,7 @@ const emit = defineEmits<{(e: 'search'): void}>()
         <Logo/>
         <div class="flex items-center gap-8">
           <Navlink to="/components">Components</Navlink>
+          <Navlink to="/password-generator">Password Generator</Navlink>
           <Navlink to="/components">Donate</Navlink>
           <Btn :is-active="false" class="!p-0">
             <Search @click="emit('search')" />
