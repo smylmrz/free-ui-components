@@ -1,17 +1,21 @@
 <script lang="ts" setup>
+import { ref } from "vue";
 import Navlink from "./Navlink.vue";
 import Btn from "../Component/Btn.vue";
 import Search from "../icons/Search.vue";
 import Hamburger from "../icons/Hamburger.vue"
 import Logo from "./Logo.vue";
 import Container from "../Component/Container.vue";
-import Modal from "../Component/Modal.vue";
-import { ref } from "vue";
+import Modal from "../Component/Modal/Modal.vue";
+import SlideTransition from "../Component/Modal/SlideTransition.vue";
 
 const emit = defineEmits<{(e: 'search'): void}>()
 
 const mobileMenuIsOpen = ref(false)
 
+const closeMobileMenu = () => {
+  mobileMenuIsOpen.value = false
+}
 const pages = [
   {
     label: "Components",
@@ -54,15 +58,29 @@ const pages = [
     </Container>
   </header>
 
-  <Modal :is-open="mobileMenuIsOpen" @close="mobileMenuIsOpen = false">
-    <div class="w-2/3 mx-auto mt-20 py-5 bg-white rounded-md flex items-center flex-col">
-      <Navlink 
-        v-for="page in pages" 
-        :key="page.label" 
-        :to="page.to"
-      >
-        {{ page.label }}
-      </Navlink>
-    </div>
+  <Modal :is-open="mobileMenuIsOpen" @close="closeMobileMenu">
+    <SlideTransition>
+    <div class="w-2/3 absolute top-0 left-0 py-5 bg-white pl-5 h-full justify-between flex flex-col">
+        <div>
+          <div class="w-2/3 flex mb-4">
+            <Logo />
+          </div>
+          <div class="flex flex-col gap-2">
+            <Navlink
+                v-for="page in pages"
+                :key="page.label"
+                :to="page.to"
+                @click="closeMobileMenu"
+            >
+              {{ page.label }}
+            </Navlink>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-sm text-gray-600">&copy; 2023 UILand. All rights reserved.</p>
+        </div>
+      </div>
+    </SlideTransition>
   </Modal>
 </template>
