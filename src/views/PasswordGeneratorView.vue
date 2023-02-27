@@ -36,8 +36,8 @@
         <div>
           <div>Password Length</div>
           <div class="flex gap-5">
-            <input @input="passwordLength = $event.target?.value" class="w-full" v-model="passwordLength" type="range" min="6" max="32">
-            <input @input="passwordLength = $event.target?.value" class="w-12 text-center border rounded-md max-w-fit w-fit flex" v-model="passwordLength" type="number" min="6" max="32">
+            <input class="w-full" v-model="passwordLength" type="range" min="6" max="32">
+            <input class="w-12 text-center border rounded-md max-w-fit w-fit flex" v-model="passwordLength" type="number" min="6" max="32">
           </div>
         </div>
       </div>
