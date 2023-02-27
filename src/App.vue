@@ -1,17 +1,18 @@
 <script setup lang="ts">
+import { computed, ref } from "vue";
+import { useGroups } from "./store/useGroups";
 import { RouterView } from "vue-router";
 import Header from "./components/Header/Header.vue";
 import Footer from "./components/Footer/Footer.vue";
-import Modal from "./components/Component/Modal.vue";
-import { computed, ref } from "vue";
+import Modal from "./components/Component/Modal/Modal.vue";
 import Search from "./components/icons/Search.vue";
-import { useGroups } from "./store/useGroups";
 import SearchResult from "./components/SearchResult.vue";
 
 const isSearchOpen = ref(false)
 const key = ref('')
-const { filterGroups, generateGroupUrl } = useGroups()
+const { filterGroups } = useGroups()
 const groups = computed(() => filterGroups(key.value))
+
 const closeSearch = () => {
   isSearchOpen.value = false
   key.value = ''
