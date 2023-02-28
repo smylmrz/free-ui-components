@@ -2,7 +2,7 @@
    <Container>
     <div class="border border-gray-200 p-10 rounded-xl w-full md:w-1/2 mx-auto mb-3">
       <div class="flex">
-        <div class="w-full bg-slate-100 rounded-md relative p-3">
+        <div class="w-full bg-slate-100 rounded-md relative p-3 whitespace-nowrap overflow-hidden">
           {{ generatedPassword }}
         </div>
         <Btn :is-active="false" class="relative">
