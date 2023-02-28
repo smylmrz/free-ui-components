@@ -1,5 +1,5 @@
-import { generatePreviewCode } from "../../../../../utils/generatePreviewCode";
-import { errorPath, successPath, warningPath } from "./svgPaths";
+import { generatePreviewCode } from "../../../../../../utils/generatePreviewCode";
+import { errorPath, successPath, warningPath } from "../svgPaths";
 
 const { openTag, closeTag, attributeWithValues, closer, slash } = generatePreviewCode()
 const dummyText = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor doloremque iure labore nulla perferendis qui quidem quod. Adipisci, dolorem exercitationem.'

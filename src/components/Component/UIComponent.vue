@@ -70,12 +70,9 @@ const copying = () => {
     </div>
 
 
-    <div class="border border-gray-100 flex justify-center gap-10 items-center rounded-lg p-10">
+<!--    <div class="border border-gray-100 flex justify-center gap-10 items-center rounded-lg p-10">-->
 
-
-
-
-    </div>
+<!--    </div>-->
 
   </div>
 </template>

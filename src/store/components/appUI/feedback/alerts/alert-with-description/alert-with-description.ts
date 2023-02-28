@@ -1,4 +1,4 @@
-import { Component } from "../../../../../models/Component";
+import { Component } from "../../../../../../models/Component";
 import { sourceCode } from "./sourceCode";
 import { previewCode } from "./previewCode";
 

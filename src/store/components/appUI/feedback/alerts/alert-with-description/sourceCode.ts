@@ -1,4 +1,4 @@
-import { errorPath, successPath, warningPath } from "./svgPaths";
+import { errorPath, successPath, warningPath } from "../svgPaths";
 
 export const sourceCode = `
 <div class="space-y-10">
