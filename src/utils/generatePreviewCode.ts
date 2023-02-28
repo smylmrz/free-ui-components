@@ -8,6 +8,10 @@ export const generatePreviewCode = () => {
         return `<span class="token attr-name">${attr}</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>${values}<span class="token punctuation">"</span></span>`
     }
 
+    const slash = () => {
+        return punctuation('/')
+    }
+
     const opener = () => {
         return punctuation('&lt;')
     }
@@ -29,7 +33,8 @@ export const generatePreviewCode = () => {
         closeTag,
         opener,
         closer,
-        attributeWithValues
+        attributeWithValues,
+        slash
     }
 
 }

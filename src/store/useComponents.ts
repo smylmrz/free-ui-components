@@ -9,11 +9,22 @@ import { secondaryButton } from "./components/appUI/elements/buttons/secondary-b
 import { inputWithLabel } from "./components/appUI/forms/input-groups/input-group-with-label/inputWithLabel";
 import {
     inputWithLabelAndHelperText
-} from "./components/appUI/forms/input-groups/input-group-with-label-and-helper-text/inputWithLabelAndHelperText";
+} from "./components/appUI/forms/input-groups/input-group-with-label-and-helper-text/input-with-label-and-helper-text";
+import { alertWithDescription } from "./components/appUI/feedback/alerts/alert-with-description/alert-with-description";
+import { alertWithActions } from "./components/appUI/feedback/alerts/alert-with-actions/alert-with-actions";
 
 export const useComponents = () => {
     const components = ref<Component[]>([
-        stackedAvatars, circularAvatar, roundedAvatar, initialsAvatar, primaryButton, secondaryButton, inputWithLabel, inputWithLabelAndHelperText
+        stackedAvatars,
+        circularAvatar,
+        roundedAvatar,
+        initialsAvatar,
+        primaryButton,
+        secondaryButton,
+        inputWithLabel,
+        inputWithLabelAndHelperText,
+        alertWithDescription,
+        alertWithActions
     ])
 
     const getComponents = (groupId: number) => {
