@@ -23,7 +23,7 @@ watchEffect(() => {
   <Container>
     <div class="relative">
       <div class=" flex flex-col items-center text-center relative space-y-8 z-10">
-        <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-light">
+        <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold">
           Build your next idea <br> even faster.
         </h1>
         <p class="md:text-lg max-w-lg text-slate-700">

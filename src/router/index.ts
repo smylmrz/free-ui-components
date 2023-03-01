@@ -4,6 +4,7 @@ import GroupView from "../views/GroupView.vue";
 import ComponentsView from "../views/ComponentsView.vue";
 import PackageView from "../views/PackageView.vue";
 import PasswordGeneratorView from "../views/PasswordGeneratorView.vue";
+import QRCodeView from "../views/QRCode/QRCodeView.vue";
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ export const router = createRouter({
       path: '/password-generator',
       name: 'password-generator',
       component: PasswordGeneratorView
-    }
+    },
+    {
+      path: '/qr-code-generator',
+      name: 'qr-code-generator',
+      component: QRCodeView
+    },
   ],
 });
