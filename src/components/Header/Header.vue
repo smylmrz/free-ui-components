@@ -28,7 +28,7 @@ const pages = [
   {
     label: "QR Code Generator",
     to: "/qr-code-generator",
-  }
+  },
   {
     label: "Sentence Generator",
     to: "/sentence-generator",
