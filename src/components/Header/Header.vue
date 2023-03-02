@@ -32,11 +32,7 @@ const pages = [
   {
     label: "Sentence Generator",
     to: "/sentence-generator",
-  },
-  // {
-  //   label: "Donate",
-  //   to: "/donate",
-  // }
+  }
 ]
 </script>
 
