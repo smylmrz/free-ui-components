@@ -39,18 +39,18 @@
    </Container>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import { ref, watchEffect } from "vue";
-import { availableTypes, QRCodeType } from "./qrCodeTypes";
+import { availableTypes } from "./qrCodeTypes";
 import Container from '../../components/Component/Container.vue';
 import vueQr from 'vue-qr/src/packages/vue-qr.vue'
 import Pill from "../../components/Pill.vue";
 
-const text = ref<string>(availableTypes[0].starter as string)
+const text = ref(availableTypes[0].starter)
 
 const qrType = ref(availableTypes[0])
 
-const setType = (type: QRCodeType) => {
+const setType = (type) => {
   qrType.value = type
 }
 
@@ -58,5 +58,5 @@ watchEffect(() => {
   text.value = qrType.value.starter ?? ''
 })
 
-const isActive = (name: string) => name === qrType.value.name
+const isActive = (name) => name === qrType.value.name
 </script>
