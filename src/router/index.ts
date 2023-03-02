@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import GroupView from "../views/GroupView.vue";
 import ComponentsView from "../views/ComponentsView.vue";
 import PackageView from "../views/PackageView.vue";
+import QRCodeView from "../views/QRCode/QRCodeView.vue";
 import PasswordGeneratorView from "../views/Password/PasswordGeneratorView.vue";
 import SenteceGeneratorView from "../views/Sentence/SenteceGeneratorView.vue";
 
@@ -33,6 +34,11 @@ export const router = createRouter({
       path: '/password-generator',
       name: 'password-generator',
       component: PasswordGeneratorView
+    },
+    {
+      path: '/qr-code-generator',
+      name: 'qr-code-generator',
+      component: QRCodeView
     },
     {
       path: '/sentence-generator',
