@@ -3,8 +3,9 @@ import HomeView from "../views/HomeView.vue";
 import GroupView from "../views/GroupView.vue";
 import ComponentsView from "../views/ComponentsView.vue";
 import PackageView from "../views/PackageView.vue";
-import PasswordGeneratorView from "../views/PasswordGeneratorView.vue";
 import QRCodeView from "../views/QRCode/QRCodeView.vue";
+import PasswordGeneratorView from "../views/Password/PasswordGeneratorView.vue";
+import SenteceGeneratorView from "../views/Sentence/SenteceGeneratorView.vue";
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -39,5 +40,10 @@ export const router = createRouter({
       name: 'qr-code-generator',
       component: QRCodeView
     },
+    {
+      path: '/sentence-generator',
+      name: 'sentence-generator',
+      component: SenteceGeneratorView
+    }
   ],
 });
