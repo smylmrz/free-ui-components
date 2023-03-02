@@ -7,7 +7,7 @@ interface PasswordStrength {
     icon?: string
 }
 
-export const passwordManager = () => {
+export const usePasswordGenerator = () => {
     const minLength = 10
     const maxLength = 40
     const passwordLength = ref(16)

@@ -25,6 +25,10 @@ const pages = [
     label: "Password Generator",
     to: "/password-generator",
   },
+  {
+    label: "Sentence Generator",
+    to: "/sentence-generator",
+  },
   // {
   //   label: "Donate",
   //   to: "/donate",
@@ -33,7 +37,7 @@ const pages = [
 </script>
 
 <template>
-  <header class="py-5 sm:py-10">
+  <header v-bind="$attrs" class="py-5 sm:py-10">
     <Container>
       <div class="flex items-center justify-between">
         <Logo/>

@@ -66,7 +66,7 @@
 
 <script lang="ts" setup>
 import { useCopyToClipBoard } from "../../utils/copy"
-import { passwordManager } from "./passwordManager";
+import { usePasswordGenerator } from "./usePasswordGenerator";
 import Container from '../../components/Component/Container.vue';
 import CopyIcon from '../../components/icons/Copy.vue';
 import Btn from '../../components/Component/Btn.vue';
@@ -84,7 +84,7 @@ const {
   generate,
   currentPasswordStrength,
   generatedPassword
-} = passwordManager()
+} = usePasswordGenerator()
 
 generate()
 
