@@ -4,6 +4,7 @@ import GroupView from "../views/GroupView.vue";
 import ComponentsView from "../views/ComponentsView.vue";
 import PackageView from "../views/PackageView.vue";
 import PasswordGeneratorView from "../views/Password/PasswordGeneratorView.vue";
+import SenteceGeneratorView from "../views/Sentence/SenteceGeneratorView.vue";
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ export const router = createRouter({
       path: '/password-generator',
       name: 'password-generator',
       component: PasswordGeneratorView
+    },
+    {
+      path: '/sentence-generator',
+      name: 'sentence-generator',
+      component: SenteceGeneratorView
     }
   ],
 });
