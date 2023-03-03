@@ -37,7 +37,7 @@ const closeMobileMenu = () => {
                   <ul>
                     <li v-for="subpage in page.subpages" :key="subpage.label">
                       <NavLink
-                          class="block px-3 py-2 hover:bg-gray-100 hover:text-blue-500"
+                          class="block px-3 py-2 hover:bg-gray-100"
                           :to="subpage.to"
                       >
                         {{ subpage.label }}
