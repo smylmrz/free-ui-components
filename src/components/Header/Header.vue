@@ -17,8 +17,6 @@ const mobileMenuIsOpen = ref(false)
 const closeMobileMenu = () => {
   mobileMenuIsOpen.value = false
 }
-
-
 </script>
 
 <template>
