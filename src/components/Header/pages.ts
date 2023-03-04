@@ -1,8 +1,9 @@
-interface Page {
+export interface Page {
     label: string;
     to: string;
     subpages: Page[]
 }
+
 export const pages = <Page[]>[
     {
         label: "Components",

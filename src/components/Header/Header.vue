@@ -9,6 +9,7 @@ import Logo from "./Logo.vue";
 import Container from "../Component/Container.vue";
 import Modal from "../Component/Modal/Modal.vue";
 import SlideTransition from "../Component/Modal/SlideTransition.vue";
+import Dropdown from "./Dropdown.vue";
 
 const emit = defineEmits<{(e: 'search'): void}>()
 
@@ -33,19 +34,8 @@ const closeMobileMenu = () => {
             >
               <NavLink :to="page.to">
                 {{ page.label }}
-                <div v-if="page.subpages" class="rounded-md border w-60 shadow hidden group-hover:block absolute top-full left-0">
-                  <ul>
-                    <li v-for="subpage in page.subpages" :key="subpage.label">
-                      <NavLink
-                          class="block px-3 py-2 hover:bg-gray-100"
-                          :to="subpage.to"
-                      >
-                        {{ subpage.label }}
-                      </NavLink>
-                    </li>
-                  </ul>
-                </div>
               </NavLink>
+              <Dropdown v-if="page.subpages" :pages="page.subpages" />
             </li>
           </ul>
           <Btn :is-active="false" class="!p-0">
