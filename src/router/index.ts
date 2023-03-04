@@ -45,5 +45,7 @@ export const router = createRouter({
       name: 'sentence-generator',
       component: SenteceGeneratorView
     }
+    // todo: add a new page for generators
+    // todo: update homepage
   ],
 });

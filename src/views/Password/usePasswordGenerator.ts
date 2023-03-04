@@ -112,7 +112,7 @@ export const usePasswordGenerator = () => {
             currentPasswordStrength.value = {
                 label: "Strong",
                 class: "bg-green-300 w-3/4",
-                color: "text-green-500"
+                color: "text-green-300"
             }
             return
         }

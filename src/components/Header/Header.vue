@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
-import Navlink from "./Navlink.vue";
+import { pages } from "./pages";
+import NavLink from "./NavLink.vue";
 import Btn from "../Component/Btn.vue";
 import Search from "../icons/Search.vue";
 import Hamburger from "../icons/Hamburger.vue"
@@ -8,6 +9,7 @@ import Logo from "./Logo.vue";
 import Container from "../Component/Container.vue";
 import Modal from "../Component/Modal/Modal.vue";
 import SlideTransition from "../Component/Modal/SlideTransition.vue";
+import Dropdown from "./Dropdown.vue";
 
 const emit = defineEmits<{(e: 'search'): void}>()
 
@@ -16,41 +18,26 @@ const mobileMenuIsOpen = ref(false)
 const closeMobileMenu = () => {
   mobileMenuIsOpen.value = false
 }
-const pages = [
-  {
-    label: "Components",
-    to: "/components",
-  },
-  {
-    label: "Password Generator",
-    to: "/password-generator",
-  },
-  {
-    label: "QR Code Generator",
-    to: "/qr-code-generator",
-  },
-  {
-    label: "Sentence Generator",
-    to: "/sentence-generator",
-  }
-]
 </script>
 
 <template>
-  <header v-bind="$attrs" class="py-5 sm:py-10">
+  <header v-bind="$attrs" class="py-3 sm:py-5">
     <Container>
       <div class="flex items-center justify-between">
         <Logo/>
         <div class="flex items-center gap-8">
-          <div class="hidden sm:flex items-center gap-8">
-            <Navlink 
-              v-for="page in pages" 
-              :key="page.label" 
-              :to="page.to"
+          <ul class="hidden sm:flex items-center gap-8">
+            <li
+              v-for="page in pages"
+              :key="page.label"
+              class="relative group py-5"
             >
-              {{ page.label }}
-            </Navlink>
-          </div>
+              <NavLink :to="page.to">
+                {{ page.label }}
+              </NavLink>
+              <Dropdown v-if="page.subpages" :pages="page.subpages" />
+            </li>
+          </ul>
           <Btn :is-active="false" class="!p-0">
             <Search @click="emit('search')" />
           </Btn>
@@ -70,14 +57,14 @@ const pages = [
             <Logo />
           </div>
           <div class="flex flex-col gap-2">
-            <Navlink
+            <NavLink
                 v-for="page in pages"
                 :key="page.label"
                 :to="page.to"
                 @click="closeMobileMenu"
             >
               {{ page.label }}
-            </Navlink>
+            </NavLink>
           </div>
         </div>
 

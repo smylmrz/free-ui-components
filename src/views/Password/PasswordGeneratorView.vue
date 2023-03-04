@@ -55,7 +55,7 @@
         </div>
         <div class="relative h-2 rounded-full bg-gray-200">
           <div
-              class="duration-200 absolute rounded-full top-0 left-0 z-10 h-full bg-red-500"
+              class="duration-200 absolute rounded-full top-0 left-0 z-10 h-full"
               :class="currentPasswordStrength.class"
           ></div>
         </div>
