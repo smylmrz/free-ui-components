@@ -7,7 +7,8 @@ import { prepositions } from "./prespositions";
 import { ref, watch } from "vue";
 export const useSentenceGenerator = () => {
 
-    const amount = ref(2)
+    const sentenceAmount = ref(1)
+    const paragraphAmount = ref(1)
     const sentence = ref('')
 
     const randomWordSelector = (words: string[]) => {
@@ -17,18 +18,26 @@ export const useSentenceGenerator = () => {
     const generate = () => {
         sentence.value = ''
 
-        for(let i = 0; i < amount.value; i++) {
-            sentence.value += `The ${randomWordSelector(adjectives)} ${randomWordSelector(nouns)} ${randomWordSelector(adverbs)} ${randomWordSelector(verbs)} because some ${randomWordSelector(nouns)} ${randomWordSelector(adverbs)} ${randomWordSelector(verbs)} ${randomWordSelector(prepositions)} ${randomWordSelector(adjectives)} ${randomWordSelector(nouns)}. `
+        for (let p = 0; p < paragraphAmount.value; p++) {
+
+            for(let i = 0; i < sentenceAmount.value; i++) {
+                sentence.value += `The ${randomWordSelector(adjectives)} ${randomWordSelector(nouns)} ${randomWordSelector(adverbs)} ${randomWordSelector(verbs)} because some ${randomWordSelector(nouns)} ${randomWordSelector(adverbs)} ${randomWordSelector(verbs)} ${randomWordSelector(prepositions)} ${randomWordSelector(adjectives)} ${randomWordSelector(nouns)}. `
+            }
+
+            if (paragraphAmount.value > 1) {
+                sentence.value+= '</br> </br>'
+            }
         }
     }
 
-    watch([amount], () => {
+    watch([sentenceAmount, paragraphAmount], () => {
         generate()
     })
 
     return {
         sentence,
         generate,
-        amount
+        sentenceAmount,
+        paragraphAmount
     }
 }
