@@ -2,7 +2,8 @@ export interface QRCodeType {
     name: string;
     title: string;
     subtitle?: string;
-    starter?: string
+    starter?: string;
+    placeholder?: string
 }
 
 export const availableTypes = <QRCodeType[]>[
@@ -10,7 +11,8 @@ export const availableTypes = <QRCodeType[]>[
         name: "website",
         title: "Website URL",
         subtitle: "Link to any website",
-        starter: "https://"
+        starter: "https://",
+        placeholder: "Website URL"
     },
     {
         name: "text",

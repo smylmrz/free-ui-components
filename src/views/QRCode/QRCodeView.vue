@@ -24,15 +24,25 @@
 
      <div class="grid gap-10 grid-cols-6 md:grid-cols-12">
        <div class="col-span-6">
-         <div class="border border-gray-200 p-5 md:p-10 rounded-xl w-full space-y-3">
-           <label class="text-lg font-bold block" for="text">Add text to generate the QR Code</label>
+         <form @submit.prevent="generate" class="border border-gray-200 p-5 md:p-10 rounded-xl w-full space-y-3">
+           <label class="text-lg font-bold block" for="text">
+             {{ qrType.placeholder ?? 'Add text to generate the QR Code' }}
+           </label>
            <input id="text" class="w-full bg-slate-100 rounded-md relative p-3 whitespace-nowrap overflow-hidden" v-model="text" type="text">
-         </div>
+           <button class="bg-gray-900 text-white rounded-md px-4 py-2">
+             Generate QR Code
+           </button>
+         </form>
        </div>
        <div class="col-span-6">
-         <div class="border border-gray-200 h-72 p-5 md:p-10 rounded-xl w-full flex items-center justify-center">
-           <vueQr v-if="text" :text="text" />
-           <div v-else class="text-xl">Your QR Code will appear here {{ text }} 🙃</div>
+         <div class="relative">
+           <a title="Download QR Code" v-if="qrText" ref="result" download="QR" class="absolute top-8 right-8">
+             <DownloadIcon class="w-8 h-8" />
+           </a>
+           <div ref="canvas" class="border border-gray-200 h-72 p-5 md:p-10 rounded-xl w-full flex items-center justify-center">
+             <vueQr v-if="qrText" :text="qrText" />
+             <div v-else class="text-xl">Your QR Code will appear here 🙃</div>
+           </div>
          </div>
        </div>
      </div>
@@ -40,23 +50,43 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from "vue";
+import {ref, watch} from "vue";
 import { availableTypes } from "./qrCodeTypes";
 import Container from '../../components/Component/Container.vue';
 import vueQr from 'vue-qr/src/packages/vue-qr.vue'
 import Pill from "../../components/Pill.vue";
+import html2canvas from 'html2canvas';
+import DownloadIcon from "../../components/icons/Download.vue";
 
 const text = ref(availableTypes[0].starter)
-
+const qrText = ref('')
+const canvas = ref()
+const result = ref()
 const qrType = ref(availableTypes[0])
 
 const setType = (type) => {
   qrType.value = type
 }
 
-watchEffect(() => {
-  text.value = qrType.value.starter ?? ''
+watch([qrType], () => {
+  text.value = qrType.value.starter
+  qrText.value = ''
 })
+
+const generate = async () => {
+  if (!text.value) {
+    return
+  }
+
+  qrText.value = text.value
+
+  setTimeout(() => {
+    html2canvas(canvas.value).then((qr) => {
+      const href = qr.toDataURL("image/png")
+      result.value.setAttribute("href", href)
+    })
+  }, 200)
+}
 
 const isActive = (name) => name === qrType.value.name
 </script>
