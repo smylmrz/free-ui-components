@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.10",
+    "html2canvas": "^1.4.1",
     "vue": "^3.2.45",
     "vue-qr": "^4.0.9",
     "vue-router": "^4.1.6"
