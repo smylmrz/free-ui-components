@@ -8,13 +8,22 @@
     </div>
 
     <div class="flex mb-5 justify-between gap-2">
-      <label class="gap-2 flex">
-        <input v-model="amount" type="number" min="1" class="text-center max-w-fit w-10 border">
-        <span>
-          Number of sentences
-        </span>
-      </label>
-      
+      <div class="flex flex-col sm:flex-row gap-2">
+        <label class="bg-gray-200 rounded-md gap-2 flex items-center py-4 sm:py-0 px-4">
+          <input v-model="sentenceAmount" type="number" min="1" class="text-center border-r border-gray-4300 appearance-none bg-transparent max-w-fit w-10">
+          <span>
+            Sentence(s) per Paragraph
+          </span>
+        </label>
+
+        <label class="bg-gray-200 rounded-md gap-2 flex items-center py-4 sm:py-0 px-4">
+          <input v-model="paragraphAmount" type="number" min="1" class="text-center border-r border-gray-4300 appearance-none bg-transparent max-w-fit w-10">
+          <span>
+            Paragraph(s)
+          </span>
+        </label>
+      </div>
+
       <Btn :is-active="false" class="relative">
         <Tooltip v-if="isCopying" />
         <CopyIcon
@@ -25,9 +34,7 @@
       </Btn>
     </div>
 
-    <div class="p-4 rounded-md bg-slate-200 mb-5">
-      {{ sentence }}
-    </div>
+    <div v-html="sentence" class="p-4 text-xl rounded-md bg-slate-200 mb-5"></div>
 
     <button class="bg-gray-900 text-white rounded-md px-4 py-2" @click="generate">
       Regenerate
@@ -43,7 +50,7 @@ import Btn from "../../components/Component/Btn.vue";
 import Tooltip from "../../components/Tooltip.vue";
 import CopyIcon from "../../components/icons/Copy.vue";
 
-const { sentence, amount, generate } = useSentenceGenerator()
+const { sentence, sentenceAmount, paragraphAmount, generate } = useSentenceGenerator()
 const { copy, isCopying } = useCopyToClipBoard()
 
 generate()
