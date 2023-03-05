@@ -50,7 +50,25 @@ const hasNoResults = computed(() => key.value && groups.value.length === 0)
   </Modal>
   <Header @search="isSearchOpen = true" class="relative z-10" />
   <div class="py-10 md:py-20">
-    <RouterView />
+    <transition>
+      <RouterView v-slot="{ Component }">
+        <component :is="Component"></component>
+      </RouterView>
+    </transition>
+
   </div>
   <Footer class="relative z-10" />
 </template>
+
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: all .5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(5px)
+}
+</style>
