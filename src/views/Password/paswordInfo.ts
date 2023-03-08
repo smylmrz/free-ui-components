@@ -1,19 +1,19 @@
 export interface PasswordInfo {
     title: string;
-    body: string
+    body: string,
+    image: string;
+    imageAlt?: string
 }
 
 export const passwordInfo = <PasswordInfo[]>[
     {
-        title: "Make them unique and random",
-        body: "81% of data breaches are caused by reused or weak passwords, so random, unique passwords are your best defense against online threats."
+        title: "Why should it be unique?",
+        body: "If you use the same password for both your email account and your bank account login, an attacker only needs to steal one password to get access to both accounts, doubling your exposure. If you've used that same password for 14 different accounts, you're making the attacker's job very, very easy. You can protect yourself by using a generator to create unique passwords that are easy to remember.",
+        image: "/src/assets/password-generator/unique-password.png"
     },
     {
-        title: "The keyword in unique",
-        body: "Using the same password multiple times will increase the chance of it being exposed. You can protect yourself by using a generator to create unique and random passwords."
-    },
-    {
-        title: "Randomness makes it even stronger",
-        body: "Random passwords are hard to guess and harder for computer programs to crack. If there's a pattern, the odds of an attacker using a brute force attack and cracking it goes up exponentially."
+        title: "Why should it be random?",
+        body: "Random passwords are hard to guess and harder for computer programs to crack. If there's a discernible pattern, the odds of an attacker using a brute force attack and gaining access to your account goes up exponentially. Random passwords might contain a jumble of unrelated characters, but combining unrelated words also works.",
+        image: "/src/assets/password-generator/random-password.png"
     }
 ]

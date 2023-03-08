@@ -55,12 +55,12 @@
       </div>
     </div>
 
-     <div class="border-t pt-20 mt-20">
-       <h2 class="text-center text-3xl font-bold">
+     <div class="border-t pt-10 mt-10 md:pt-20 md:mt-20">
+       <h2 class="text-xl text-center md:text-3xl font-bold">
          What makes a password strong?
        </h2>
-       <div class="grid mt-20 gap-10 grid-cols-4 md:grid-cols-12">
-         <InfoCard class="col-span-4" v-for="info in passwordInfo" :key="info.title" :info="info" />
+       <div class="grid mt-10 md:mt-20 gap-10 grid-cols-6 md:grid-cols-12">
+         <InfoCard class="col-span-6" v-for="info in passwordInfo" :key="info.title" :info="info" />
        </div>
      </div>
    </Container>
