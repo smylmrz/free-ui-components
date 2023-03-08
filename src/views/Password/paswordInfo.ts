@@ -16,6 +16,6 @@ export const passwordInfo = <PasswordInfo[]>[
     {
         title: "Why should it be random?",
         body: "Random passwords are hard to guess and harder for computer programs to crack. If there's a discernible pattern, the odds of an attacker using a brute force attack and gaining access to your account goes up exponentially. Random passwords might contain a jumble of unrelated characters, but combining unrelated words also works.",
-        image: getImagePath() + "/public/password-generator/random-password.png"
+        image: getImagePath() + "password-generator/random-password.png"
     }
 ]
