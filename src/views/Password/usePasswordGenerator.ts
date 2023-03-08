@@ -8,13 +8,14 @@ interface PasswordStrength {
 }
 
 export const usePasswordGenerator = () => {
-    const minLength = 10
+    const minLength = 16
     const maxLength = 40
-    const passwordLength = ref(16)
+    const passwordLength = ref(minLength)
     const includeUppercase = ref(false)
     const includeNumbers = ref(false)
     const includeSymbols = ref(false)
     const generatedPassword  = ref('')
+    const isGenerating = ref(false)
 
     const currentPasswordStrength = ref<PasswordStrength>({
         label: "Weak",
@@ -24,6 +25,7 @@ export const usePasswordGenerator = () => {
 
     // Function to create a random password
     const generate = () => {
+        isGenerating.value = true
         // reset password
         generatedPassword.value = ''
         // define character sets for each parameter
@@ -54,6 +56,10 @@ export const usePasswordGenerator = () => {
             const randomIndex = Math.floor(Math.random() * baseChars.length);
             generatedPassword.value += baseChars[randomIndex];
         }
+
+        setTimeout(() => {
+            isGenerating.value = false
+        }, 500)
     }
 
     const hasAll = computed(() => {
@@ -157,5 +163,6 @@ export const usePasswordGenerator = () => {
         currentPasswordStrength,
         generatedPassword,
         generate,
+        isGenerating
     }
 }

@@ -1,66 +1,68 @@
 <template>
    <Container>
-     <div class="text-center space-y-5 mb-10 lg:mb-20">
-       <h1 class="text-4xl md:text-5xl lg:text-6xl leading-tight lg:leading-tight font-extrabold">
-         Generate a secure
-         <span class="text-blue-500">Password</span> in seconds.
-       </h1>
-       <p class="text-2xl text-gray-500 font-medium">Generate secure, random passwords to stay safe online.</p>
+     <Hero />
 
-     </div>
-    <div class="border border-gray-200 p-10 rounded-xl w-full md:w-2/3 mx-auto mb-3">
-      <div class="flex">
-        <div class="w-full text-xl bg-slate-100 rounded-md relative p-3 whitespace-nowrap overflow-hidden">
-          {{ generatedPassword }}
-        </div>
-        <Btn :is-active="false" class="relative">
-          <Tooltip v-if="isCopying" />
-          <CopyIcon
-              @click="copyPassword"
-              :class="isCopying && '!stroke-sky-500 rotate-6 scale-125'"
-          >
-          </CopyIcon>
-        </Btn>
-      </div>
-      <div class="space-y-3 my-5">
-        <div>
-          <label class="flex gap-2">
-            <input v-model="includeUppercase" type="checkbox">
-            <span>Uppercase</span>
-          </label>
-        </div>
-        <div>
-          <label class="flex gap-2">
-            <input v-model="includeNumbers" type="checkbox">
-            <span>Numbers</span>
-          </label>
-        </div>
-        <div>
-          <label class="flex gap-2">
-            <input v-model="includeSymbols" type="checkbox">
-            <span>Symbols</span>
-          </label>
-        </div>
-        <div>
-          <div>Password Length</div>
-          <div class="flex gap-5">
-            <input class="w-full" v-model="passwordLength" type="range" :min="minLength" :max="maxLength">
-            <input class="w-12 text-center border rounded-md max-w-fit w-fit flex" v-model="passwordLength" type="number" :min="minLength" :max="maxLength">
+     <div class="w-full lg:w-2/3 mx-auto mb-3">
+      <div class="space-y-5 mb-5">
+        <div class="space-y-2">
+          <div class="font-semibold">
+            Generated Password:
+          </div>
+          <div class="w-full text-xl md:text-2xl lg:text-4xl bg-slate-100 rounded-md relative p-3 whitespace-nowrap overflow-hidden">
+            {{ generatedPassword }}
           </div>
         </div>
+        <div class="space-y-2">
+          <div class="flex gap-1">
+            <span class="font-semibold">Password Strength:</span>
+            <span class="font-bold" :class="currentPasswordStrength.color">{{ currentPasswordStrength.label }}</span>
+          </div>
+          <div class="relative h-2 rounded-full bg-gray-200">
+            <div :class="['duration-200 absolute rounded-full top-0 left-0 z-10 h-full', currentPasswordStrength.class]"/>
+          </div>
+        </div>
+
+        <div class="flex flex-col bg-slate-100 p-5 rounded-md md:items-center md:flex-row justify-between gap-3 my-5">
+          <Complexity v-model="includeUppercase">Uppercase</Complexity>
+          <Complexity v-model="includeNumbers">Numbers</Complexity>
+          <Complexity v-model="includeSymbols">Symbols</Complexity>
+
+          <label class="flex gap-5 cursor-pointer">
+            <span>Length</span>
+            <input class="w-full" v-model="passwordLength" type="range" :min="minLength" :max="maxLength">
+            <input class="w-12 text-center border rounded-md max-w-fit w-fit flex" v-model="passwordLength" type="number" :min="minLength" :max="maxLength">
+          </label>
+        </div>
       </div>
-      <div class="space-y-2">
-        <div>
-          Password Strength : <span class="font-bold" :class="currentPasswordStrength.color">{{ currentPasswordStrength.label }}</span>
-        </div>
-        <div class="relative h-2 rounded-full bg-gray-200">
-          <div
-              class="duration-200 absolute rounded-full top-0 left-0 z-10 h-full"
-              :class="currentPasswordStrength.class"
-          ></div>
-        </div>
+
+      <div class="flex gap-2">
+        <CommonButton @click="generate" is-primary>
+          <span>
+            Regenerate
+          </span>
+          <Refresh :class="['stroke-white', isGenerating && 'animate-spin']" />
+        </CommonButton>
+
+        <CommonButton @click="copyPassword">
+          <span>
+            Copy
+          </span>
+          <span class="relative">
+            <Tooltip v-if="isCopying" />
+            <CopyIcon :class="isCopying && '!stroke-white rotate-6 scale-125'" />
+          </span>
+        </CommonButton>
       </div>
     </div>
+
+     <div class="border-t pt-20 mt-20">
+       <h2 class="text-center text-3xl font-bold">
+         What makes a password strong?
+       </h2>
+       <div class="grid mt-20 gap-10 grid-cols-4 md:grid-cols-12">
+         <InfoCard class="col-span-4" v-for="info in passwordInfo" :key="info.title" :info="info" />
+       </div>
+     </div>
    </Container>
 </template>
 
@@ -69,8 +71,13 @@ import { useCopyToClipBoard } from "../../utils/copy"
 import { usePasswordGenerator } from "./usePasswordGenerator";
 import Container from '../../components/Component/Container.vue';
 import CopyIcon from '../../components/icons/Copy.vue';
-import Btn from '../../components/Component/Btn.vue';
 import Tooltip from '../../components/Tooltip.vue';
+import Complexity from "./Complexity.vue";
+import Refresh from "../../components/icons/Refresh.vue";
+import Hero from "./Hero.vue";
+import CommonButton from "../../components/CommonButton.vue";
+import { passwordInfo } from "./paswordInfo";
+import InfoCard from "./InfoCard.vue";
 
 const { isCopying, copy } = useCopyToClipBoard()
 
@@ -83,7 +90,8 @@ const {
   includeUppercase,
   generate,
   currentPasswordStrength,
-  generatedPassword
+  generatedPassword,
+  isGenerating
 } = usePasswordGenerator()
 
 generate()
