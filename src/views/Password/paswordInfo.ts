@@ -1,6 +1,6 @@
 import { getImagePath } from "../../utils/getImagePath";
 
-interface PasswordInfo {
+export interface PasswordInfo {
     title: string;
     body: string,
     image: string;
