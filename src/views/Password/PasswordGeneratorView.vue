@@ -1,92 +1,64 @@
 <template>
    <Container>
-     <div class="text-center space-y-5 mb-10 lg:mb-20">
-       <h1 class="text-4xl md:text-5xl lg:text-6xl leading-tight lg:leading-tight font-extrabold">
-         Generate a secure
-         <span class="text-blue-500">Password</span> in seconds.
-       </h1>
-       <p class="text-2xl text-gray-500 font-medium">Generate secure, random passwords to stay safe online.</p>
+     <Hero />
 
-     </div>
-    <div class="border border-gray-200 p-10 rounded-xl w-full md:w-2/3 mx-auto mb-3">
-      <div class="flex">
-        <div class="w-full text-xl bg-slate-100 rounded-md relative p-3 whitespace-nowrap overflow-hidden">
-          {{ generatedPassword }}
-        </div>
-        <Btn :is-active="false" class="relative">
-          <Tooltip v-if="isCopying" />
-          <CopyIcon
-              @click="copyPassword"
-              :class="isCopying && '!stroke-sky-500 rotate-6 scale-125'"
-          >
-          </CopyIcon>
-        </Btn>
+     <div class="w-full lg:w-2/3 mx-auto mb-3">
+      <div class="space-y-5 mb-5">
+        <RandomPasswordGenerator @generate="generatedPassword = $event" v-if="passwordType === 'Random'" />
+        <MemorablePasswordGenerator @generate="generatedPassword = $event" v-else />
       </div>
-      <div class="space-y-3 my-5">
-        <div>
-          <label class="flex gap-2">
-            <input v-model="includeUppercase" type="checkbox">
-            <span>Uppercase</span>
-          </label>
-        </div>
-        <div>
-          <label class="flex gap-2">
-            <input v-model="includeNumbers" type="checkbox">
-            <span>Numbers</span>
-          </label>
-        </div>
-        <div>
-          <label class="flex gap-2">
-            <input v-model="includeSymbols" type="checkbox">
-            <span>Symbols</span>
-          </label>
-        </div>
-        <div>
-          <div>Password Length</div>
-          <div class="flex gap-5">
-            <input class="w-full" v-model="passwordLength" type="range" :min="minLength" :max="maxLength">
-            <input class="w-12 text-center border rounded-md max-w-fit w-fit flex" v-model="passwordLength" type="number" :min="minLength" :max="maxLength">
-          </div>
-        </div>
-      </div>
-      <div class="space-y-2">
-        <div>
-          Password Strength : <span class="font-bold" :class="currentPasswordStrength.color">{{ currentPasswordStrength.label }}</span>
-        </div>
-        <div class="relative h-2 rounded-full bg-gray-200">
-          <div
-              class="duration-200 absolute rounded-full top-0 left-0 z-10 h-full"
-              :class="currentPasswordStrength.class"
-          ></div>
-        </div>
+
+      <div class="flex gap-2">
+        <label class="flex gap-5 cursor-pointer">
+          <select v-model="passwordType" class="border bg-slate-100 px-4 py-2 rounded-md">
+            <option v-for="pt in availableTypes" :value="pt" :key="pt"> {{ pt }}</option>
+          </select>
+        </label>
+
+        <CommonButton @click="copyPassword">
+          <span>
+            Copy
+          </span>
+          <span class="relative">
+            <Tooltip v-if="isCopying" />
+            <CopyIcon :class="isCopying && '!stroke-sky-500 rotate-6 scale-125'" />
+          </span>
+        </CommonButton>
       </div>
     </div>
+
+     <div class="border-t pt-10 mt-10 md:pt-20 md:mt-20">
+       <h2 class="text-xl text-center md:text-3xl font-bold">
+         What makes a password strong?
+       </h2>
+       <div class="grid mt-10 md:mt-20 gap-10 grid-cols-6 md:grid-cols-12">
+         <InfoCard class="col-span-6" v-for="info in passwordInfo" :key="info.title" :info="info" />
+       </div>
+     </div>
    </Container>
 </template>
 
 <script lang="ts" setup>
+import { ref } from "vue";
 import { useCopyToClipBoard } from "../../utils/copy"
 import { usePasswordGenerator } from "./usePasswordGenerator";
+import { passwordInfo } from "./paswordInfo";
 import Container from '../../components/Component/Container.vue';
 import CopyIcon from '../../components/icons/Copy.vue';
-import Btn from '../../components/Component/Btn.vue';
 import Tooltip from '../../components/Tooltip.vue';
+import Hero from "./Hero.vue";
+import CommonButton from "../../components/CommonButton.vue";
+import InfoCard from "./InfoCard.vue";
+import RandomPasswordGenerator from "./RandomPasswordGenerator.vue";
+import MemorablePasswordGenerator from "./MemorablePasswordGenerator.vue";
 
 const { isCopying, copy } = useCopyToClipBoard()
+const generatedPassword = ref('')
 
 const {
-  minLength,
-  maxLength,
-  passwordLength,
-  includeNumbers,
-  includeSymbols,
-  includeUppercase,
-  generate,
-  currentPasswordStrength,
-  generatedPassword
+  availableTypes,
+  passwordType
 } = usePasswordGenerator()
-
-generate()
 
 const copyPassword = () => copy(generatedPassword.value)
 
