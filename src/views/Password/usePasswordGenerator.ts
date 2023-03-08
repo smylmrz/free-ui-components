@@ -1,34 +1,32 @@
-import { computed, ref, watch } from "vue";
-
-interface PasswordStrength {
-    label: string;
-    class: string;
-    color: string;
-    icon?: string
-}
+import { ref, watch } from "vue";
+import { memorableWords } from "./memorableWords";
 
 export const usePasswordGenerator = () => {
-    const minLength = 16
-    const maxLength = 40
-    const passwordLength = ref(minLength)
+    const randomMinLength = 16
+    const randomMaxLength = 40
+    const memoMinLength = 3
+    const memoMaxLength = 12
+    const availableTypes = ref(["Random", "Memorable"])
+    const passwordType = ref(availableTypes.value[0])
+    const randomPasswordLength = ref(randomMinLength)
+    const memorablePasswordLength = ref(memoMinLength)
     const includeUppercase = ref(false)
     const includeNumbers = ref(false)
     const includeSymbols = ref(false)
+    const capitalize = ref(false)
     const generatedPassword  = ref('')
     const isGenerating = ref(false)
 
-    const currentPasswordStrength = ref<PasswordStrength>({
-        label: "Weak",
-        class: "bg-red-500 w-1/4",
-        color: 'text-red-700'
-    })
+    const selectType = (type: string) => {
+        passwordType.value = type
+    }
 
     // Function to create a random password
-    const generate = () => {
+    const generateRandomPassword = () => {
         isGenerating.value = true
-        // reset password
+
         generatedPassword.value = ''
-        // define character sets for each parameter
+
         const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
         const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         const numberChars = '0123456789';
@@ -52,7 +50,7 @@ export const usePasswordGenerator = () => {
 
         // generate a random password by selecting characters from the base character set
 
-        for (let i = 0; i < passwordLength.value; i++) {
+        for (let i = 0; i < randomPasswordLength.value; i++) {
             const randomIndex = Math.floor(Math.random() * baseChars.length);
             generatedPassword.value += baseChars[randomIndex];
         }
@@ -62,107 +60,57 @@ export const usePasswordGenerator = () => {
         }, 500)
     }
 
-    const hasAll = computed(() => {
-        return includeUppercase.value && includeNumbers.value && includeSymbols.value
-    })
-    // any combination of 2/3
-    const isOk = computed(() => {
-        return (includeUppercase.value && includeNumbers.value) || (includeUppercase.value && includeSymbols.value) || (includeNumbers.value && includeSymbols)
-    })
-
-    // contains everything and is longer than 31 chars
-    const isUnCrackable = computed(() => {
-        return hasAll.value && passwordLength.value >= 32
-    })
-
-    // contains everything and is longer than 23 chars
-    const isVeryStrong = computed(() => {
-        return hasAll.value && passwordLength.value >= 24
-    })
-
-    // contains everything and is longer than 15 chars
-    const isStrong = computed(() => {
-        return isOk.value && passwordLength.value >= 16
-    })
-
-    // contains everything and is shorter than 15 chars
-    const isGood = computed(() => {
-        return hasAll.value && passwordLength.value >= 12
-    })
-
-    // contains everything and is shorter than 15 chars
-    const isMedium = computed(() => {
-        return isOk.value && passwordLength.value >= 12
-    })
-
-    const checkPasswordStrength = () => {
-        if (isUnCrackable.value) {
-            currentPasswordStrength.value = {
-                label: "Uncrackable",
-                class: "!bg-sky-500 w-full",
-                color: "text-sky-500"
-            }
-            return
-        }
-
-        if (isVeryStrong.value) {
-            currentPasswordStrength.value = {
-                label: "Very Strong",
-                class: "bg-green-500 w-5/6",
-                color: "text-green-500"
-            }
-            return
-        }
-
-        if (isStrong.value) {
-            currentPasswordStrength.value = {
-                label: "Strong",
-                class: "bg-green-300 w-3/4",
-                color: "text-green-300"
-            }
-            return
-        }
-
-        if (isGood.value) {
-            currentPasswordStrength.value = {
-                label: "Good",
-                class: "bg-orange-500 w-2/3",
-                color: "text-orange-500"
-            }
-            return
-        }
-
-        if (isMedium.value) {
-            currentPasswordStrength.value = {
-                label: "Medium",
-                class: "bg-orange-300 w-1/2",
-                color: "text-orange-300"
-            }
-            return
-        }
-
-        currentPasswordStrength.value = {
-            label: "Weak",
-            class: "bg-red-500 w-1/4",
-            color: 'text-red-700'
-        }
+    const randomWordSelector = (words: string[]) => {
+        return words[Math.floor(Math.random() * words.length)];
     }
 
-    watch([passwordLength, includeUppercase, includeNumbers, includeSymbols], () => {
-        generate()
-        checkPasswordStrength()
+    const generateMemorablePassword = () => {
+        isGenerating.value = true
+
+        generatedPassword.value = ''
+
+        for (let i = 0; i < memorablePasswordLength.value; i++) {
+            generatedPassword.value += randomWordSelector(memorableWords)
+
+            if (i !== memorablePasswordLength.value - 1) {
+                generatedPassword.value += '-'
+            }
+        }
+
+        if (capitalize.value) {
+            generatedPassword.value = generatedPassword.value.charAt(0).toUpperCase() + generatedPassword.value.slice(1)
+        }
+
+        setTimeout(() => {
+            isGenerating.value = false
+        }, 500)
+    }
+
+    watch([capitalize, memorablePasswordLength], () => {
+        generateMemorablePassword()
+    })
+
+    watch([passwordType, randomPasswordLength, includeUppercase, includeNumbers, includeSymbols], () => {
+        generateRandomPassword()
     })
 
     return {
-        minLength,
-        maxLength,
-        passwordLength,
+        memoMinLength,
+        memoMaxLength,
+        randomMinLength,
+        randomMaxLength,
+        randomPasswordLength,
+        memorablePasswordLength,
         includeUppercase,
         includeNumbers,
         includeSymbols,
-        currentPasswordStrength,
         generatedPassword,
-        generate,
-        isGenerating
+        generateRandomPassword,
+        generateMemorablePassword,
+        isGenerating,
+        availableTypes,
+        passwordType,
+        selectType,
+        capitalize
     }
 }
