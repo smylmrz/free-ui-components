@@ -56,16 +56,31 @@ const closeMobileMenu = () => {
           <div class="w-2/3 flex mb-4">
             <Logo />
           </div>
-          <div class="flex flex-col gap-2">
-            <NavLink
+          <ul class="flex flex-col gap-2">
+            <li
                 v-for="page in pages"
                 :key="page.label"
-                :to="page.to"
-                @click="closeMobileMenu"
             >
-              {{ page.label }}
-            </NavLink>
-          </div>
+              <NavLink
+                  :to="page.to"
+                  @click="closeMobileMenu"
+              >
+                {{ page.label }}
+              </NavLink>
+              <div class="pl-5 mt-2" v-if="page.subpages">
+                <ul class="flex flex-col gap-2">
+                  <li v-for="subpage in page.subpages" :key="subpage.label">
+                    <NavLink
+                        :to="subpage.to"
+                        @click="closeMobileMenu"
+                    >
+                      {{ subpage.label }}
+                    </NavLink>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
         </div>
 
         <div>
