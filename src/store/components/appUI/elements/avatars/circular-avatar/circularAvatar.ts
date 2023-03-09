@@ -1,8 +1,8 @@
 import { sourceCode } from "./sourceCode";
 import { previewCode } from "./previewCode";
-import { Component } from "../../../../../../models/UIComponent";
+import { UIComponent } from "../../../../../../models/UIComponent";
 
-export const circularAvatar = <Component>{
+export const circularAvatar = <UIComponent>{
   id: 2,
   name: "Circular Avatar",
   groupId: 57,

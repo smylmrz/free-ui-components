@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import { Component } from "../models/UIComponent";
+import { UIComponent } from "../models/UIComponent";
 import { circularAvatar } from "./components/appUI/elements/avatars/circular-avatar/circularAvatar";
 import { stackedAvatars } from "./components/appUI/elements/avatars/stacked-avatars/stackedAvatars";
 import { roundedAvatar } from "./components/appUI/elements/avatars/rounded-avatar/roundedAvatar";
@@ -14,7 +14,7 @@ import { alertWithDescription } from "./components/appUI/feedback/alerts/alert-w
 import { alertWithActions } from "./components/appUI/feedback/alerts/alert-with-actions/alert-with-actions";
 
 export const useComponents = () => {
-    const components = ref<Component[]>([
+    const components = ref<UIComponent[]>([
         stackedAvatars,
         circularAvatar,
         roundedAvatar,
@@ -38,5 +38,3 @@ export const useComponents = () => {
         getComponents
     }
 }
-
-//todo: generate preview code automatically
