@@ -1,0 +1,30 @@
+<template>
+  <div>
+    <div class="space-y-4 mb-10">
+      <h2 class="text-2xl font-semibold">
+        {{ pckg.name }}
+      </h2>
+      <p class="text-sm text-slate-500">
+        {{ pckg.description }}
+      </p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      <GroupCard v-for="group in groups" :key="group.id" :group="group" />
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { useGroups } from "../../store/useGroups";
+import { useRoute } from "vue-router";
+import { usePackages } from "../../store/usePackages";
+import GroupCard from "../../components/GroupCard.vue";
+
+const { getGroupsByPackage } = useGroups()
+const route = useRoute()
+const packageId = parseInt(route.params.packageId as string)
+const { getPackage } = usePackages()
+const pckg = getPackage(packageId)
+
+const groups = getGroupsByPackage(pckg.id)
+</script>

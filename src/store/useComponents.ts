@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import { Component } from "../models/Component";
+import { Component } from "../models/UIComponent";
 import { circularAvatar } from "./components/appUI/elements/avatars/circular-avatar/circularAvatar";
 import { stackedAvatars } from "./components/appUI/elements/avatars/stacked-avatars/stackedAvatars";
 import { roundedAvatar } from "./components/appUI/elements/avatars/rounded-avatar/roundedAvatar";

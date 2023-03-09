@@ -1,5 +1,5 @@
 import { ref, watch } from "vue";
-import { memorableWords } from "./memorableWords";
+import { memorableWords } from "../views/PasswordGenerator/memorableWords";
 
 export const usePasswordGenerator = () => {
     const randomMinLength = 16
@@ -16,6 +16,10 @@ export const usePasswordGenerator = () => {
     const capitalize = ref(false)
     const generatedPassword  = ref('')
     const isGenerating = ref(false)
+    const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
+    const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const numberChars = '0123456789';
+    const symbolChars = '!@#$%^&*()_+-={}[]|:;"<>,.?/';
 
     const selectType = (type: string) => {
         passwordType.value = type
@@ -26,11 +30,6 @@ export const usePasswordGenerator = () => {
         isGenerating.value = true
 
         generatedPassword.value = ''
-
-        const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
-        const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const numberChars = '0123456789';
-        const symbolChars = '!@#$%^&*()_+-={}[]|:;"<>,.?/';
 
         // create a base character set consisting of only lowercase letters
         let baseChars = lowercaseChars;
@@ -95,22 +94,22 @@ export const usePasswordGenerator = () => {
     })
 
     return {
-        memoMinLength,
-        memoMaxLength,
-        randomMinLength,
-        randomMaxLength,
-        randomPasswordLength,
-        memorablePasswordLength,
-        includeUppercase,
-        includeNumbers,
-        includeSymbols,
         generatedPassword,
-        generateRandomPassword,
-        generateMemorablePassword,
         isGenerating,
         availableTypes,
         passwordType,
+        memoMinLength,
+        memoMaxLength,
+        memorablePasswordLength,
+        capitalize,
+        randomMinLength,
+        randomMaxLength,
+        randomPasswordLength,
+        includeUppercase,
+        includeNumbers,
+        includeSymbols,
+        generateMemorablePassword,
         selectType,
-        capitalize
+        generateRandomPassword
     }
 }

@@ -27,7 +27,7 @@
 
 <script lang="ts" setup>
 import Complexity from "./Complexity.vue";
-import { usePasswordGenerator } from "./usePasswordGenerator";
+import { usePasswordGenerator } from "../../hooks/usePasswordGenerator";
 import { watchEffect } from "vue";
 import GeneratedPassword from "./GeneratedPassword.vue";
 import Regenerate from "./Regenerate.vue";

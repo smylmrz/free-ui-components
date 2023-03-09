@@ -1,5 +1,5 @@
 <template>
-   <Container>
+   <div>
      <Hero />
 
      <div class="w-full lg:w-2/3 mx-auto mb-3">
@@ -35,16 +35,15 @@
          <InfoCard class="col-span-6" v-for="info in passwordInfo" :key="info.title" :info="info" />
        </div>
      </div>
-   </Container>
+   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from "vue";
-import { useCopyToClipBoard } from "../../utils/copy"
-import { usePasswordGenerator } from "./usePasswordGenerator";
+import { useCopyToClipBoard } from "../../hooks/useCopyToClipBoard"
+import { usePasswordGenerator } from "../../hooks/usePasswordGenerator";
 import { passwordInfo } from "./paswordInfo";
-import Container from '../../components/Component/Container.vue';
-import CopyIcon from '../../components/icons/Copy.vue';
+import CopyIcon from '../../components/Icons/Copy.vue';
 import Tooltip from '../../components/Tooltip.vue';
 import Hero from "./Hero.vue";
 import CommonButton from "../../components/CommonButton.vue";

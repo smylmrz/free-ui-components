@@ -3,12 +3,12 @@ import { ref } from "vue";
 import { pages } from "./pages";
 import NavLink from "./NavLink.vue";
 import Btn from "../Component/Btn.vue";
-import Search from "../icons/Search.vue";
-import Hamburger from "../icons/Hamburger.vue"
+import Search from "../Icons/Search.vue";
+import Hamburger from "../Icons/Hamburger.vue"
 import Logo from "./Logo.vue";
 import Container from "../Component/Container.vue";
-import Modal from "../Component/Modal/Modal.vue";
-import SlideTransition from "../Component/Modal/SlideTransition.vue";
+import Modal from "../Modal/Modal.vue";
+import SlideTransition from "../Modal/SlideTransition.vue";
 import Dropdown from "./Dropdown.vue";
 
 const emit = defineEmits<{(e: 'search'): void}>()
@@ -56,16 +56,31 @@ const closeMobileMenu = () => {
           <div class="w-2/3 flex mb-4">
             <Logo />
           </div>
-          <div class="flex flex-col gap-2">
-            <NavLink
+          <ul class="flex flex-col gap-2">
+            <li
                 v-for="page in pages"
                 :key="page.label"
-                :to="page.to"
-                @click="closeMobileMenu"
             >
-              {{ page.label }}
-            </NavLink>
-          </div>
+              <NavLink
+                  :to="page.to"
+                  @click="closeMobileMenu"
+              >
+                {{ page.label }}
+              </NavLink>
+              <div class="pl-5 mt-2" v-if="page.subpages">
+                <ul class="flex flex-col gap-2">
+                  <li v-for="subpage in page.subpages" :key="subpage.label">
+                    <NavLink
+                        :to="subpage.to"
+                        @click="closeMobileMenu"
+                    >
+                      {{ subpage.label }}
+                    </NavLink>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
         </div>
 
         <div>

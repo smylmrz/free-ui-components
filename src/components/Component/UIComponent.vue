@@ -1,32 +1,3 @@
-<script lang="ts" setup>
-import { ref } from "@vue/reactivity";
-import { copy } from "../../utils/copy";
-import { Component } from "../../models/Component";
-import Btn from "./Btn.vue";
-import ComponentTitle from "./ComponentTitle.vue";
-import Code from "./Code.vue";
-import CodeIcon from "../icons/Code.vue"
-import CopyIcon from "../icons/Copy.vue";
-import EyeIcon from "../icons/Eye.vue";
-import Tooltip from "../Tooltip.vue";
-import CodePreview from "./CodePreview.vue";
-
-const isPreviewing = ref(true);
-const isCopying = ref(false);
-
-const props = defineProps<{
-  component: Component;
-}>();
-
-const copying = () => {
-  isCopying.value = true;
-  copy(props.component.sourceCode);
-  setTimeout(() => {
-    isCopying.value = false;
-  }, 1500);
-};
-</script>
-
 <template>
   <div>
     <div class="flex mb-5 items-center justify-between">
@@ -80,5 +51,34 @@ const copying = () => {
 
   </div>
 </template>
+
+<script lang="ts" setup>
+import { ref } from "@vue/reactivity";
+import { useCopyToClipBoard } from "../../hooks/useCopyToClipBoard";
+import { UIComponent } from "../../models/UIComponent";
+import Btn from "./Btn.vue";
+import ComponentTitle from "./ComponentTitle.vue";
+import Code from "./Code.vue";
+import CodeIcon from "../Icons/Code.vue"
+import CopyIcon from "../Icons/Copy.vue";
+import EyeIcon from "../Icons/Eye.vue";
+import Tooltip from "../Tooltip.vue";
+import CodePreview from "./CodePreview.vue";
+
+const isPreviewing = ref(true);
+const { copy, isCopying } = useCopyToClipBoard()
+
+const props = defineProps<{
+  component: UIComponent;
+}>();
+
+const copying = () => {
+  isCopying.value = true;
+  copy(props.component.sourceCode);
+  setTimeout(() => {
+    isCopying.value = false;
+  }, 1500);
+};
+</script>
 
 

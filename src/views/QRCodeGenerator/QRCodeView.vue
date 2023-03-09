@@ -1,5 +1,5 @@
 <template>
-   <Container>
+   <div>
       <div class="space-y-8 mb-10 lg:mb-20">
         <h1 class="text-4xl md:text-5xl lg:text-6xl leading-tight font-extrabold">
           Generate your
@@ -46,17 +46,16 @@
          </div>
        </div>
      </div>
-   </Container>
+   </div>
 </template>
 
 <script setup>
 import {ref, watch} from "vue";
 import { availableTypes } from "./qrCodeTypes";
-import Container from '../../components/Component/Container.vue';
 import vueQr from 'vue-qr/src/packages/vue-qr.vue'
-import Pill from "../../components/Pill.vue";
+import Pill from "./Pill.vue";
 import html2canvas from 'html2canvas';
-import DownloadIcon from "../../components/icons/Download.vue";
+import DownloadIcon from "../../components/Icons/Download.vue";
 
 const text = ref(availableTypes[0].starter)
 const qrText = ref('')
