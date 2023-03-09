@@ -5,8 +5,8 @@ import ComponentsView from "../views/UIComponent/ComponentsView.vue";
 import PackageView from "../views/UIComponent/PackageView.vue";
 import QRCodeView from "../views/QRCodeGenerator/QRCodeView.vue";
 import PasswordGeneratorView from "../views/PasswordGenerator/PasswordGeneratorView.vue";
-import SenteceGeneratorView from "../views/SentenceGenerator/SenteceGeneratorView.vue";
-
+import SentenceGeneratorView from "../views/SentenceGenerator/SentenceGeneratorView.vue";
+import NotFound from "../views/404.vue"
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -43,9 +43,12 @@ export const router = createRouter({
     {
       path: '/sentence-generator',
       name: 'sentence-generator',
-      component: SenteceGeneratorView
+      component: SentenceGeneratorView
+    },
+    {
+      path: '/:pathMatch(.*)',
+      name: 'not-found',
+      component:  NotFound
     }
-    // todo: add a new page for generators
-    // todo: update homepage
   ],
 });

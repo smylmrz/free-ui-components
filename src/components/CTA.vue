@@ -2,10 +2,12 @@
 import { computed } from "vue";
 import { RouterLink } from "vue-router";
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   type: "primary" | "secondary";
   to: string
-}>();
+}>(), {
+  type: "primary"
+});
 
 const isPrimary = computed(() => props.type === "primary")
 </script>
