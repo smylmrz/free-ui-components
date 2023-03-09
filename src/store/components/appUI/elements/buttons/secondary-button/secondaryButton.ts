@@ -1,8 +1,8 @@
-import { Component } from "../../../../../../models/UIComponent";
+import { UIComponent } from "../../../../../../models/UIComponent";
 import { previewCode } from "./previewCode";
 import { sourceCode } from "./sourceCode";
 
-export const secondaryButton = <Component>{
+export const secondaryButton = <UIComponent>{
     id: 6,
     name: "Secondary Button",
     groupId: 60,

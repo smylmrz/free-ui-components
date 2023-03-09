@@ -1,8 +1,8 @@
-import { Component } from "../../../../../../models/UIComponent";
+import { UIComponent } from "../../../../../../models/UIComponent";
 import { previewCode } from "./previewCode";
 import { sourceCode } from "./sourceCode";
 
-export const primaryButton = <Component>{
+export const primaryButton = <UIComponent>{
     id: 5,
     name: "Primary Button",
     groupId: 60,

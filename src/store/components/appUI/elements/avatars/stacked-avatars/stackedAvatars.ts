@@ -1,8 +1,8 @@
 import { previewCode } from "./previewCode";
 import { sourceCode } from "./sourceCode";
-import { Component } from "../../../../../../models/UIComponent";
+import { UIComponent } from "../../../../../../models/UIComponent";
 
-export const stackedAvatars = <Component>{
+export const stackedAvatars = <UIComponent>{
     id: 1,
     name: "Stacked Avatars",
     groupId: 57,
