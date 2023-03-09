@@ -18,7 +18,3 @@ export const useCopyToClipBoard = () => {
     isCopying
   }
 }
-
-export const copy = (text: string) => {
-  navigator.clipboard.writeText(text);
-};

@@ -4,9 +4,10 @@ import { useGroups } from "./store/useGroups";
 import { RouterView } from "vue-router";
 import Header from "./components/Header/Header.vue";
 import Footer from "./components/Footer/Footer.vue";
-import Modal from "./components/Component/Modal/Modal.vue";
-import Search from "./components/icons/Search.vue";
+import Modal from "./components/Modal/Modal.vue";
+import Search from "./components/Icons/Search.vue";
 import SearchResult from "./components/SearchResult.vue";
+import Container from "./components/Component/Container.vue";
 
 const isSearchOpen = ref(false)
 const key = ref('')
@@ -50,25 +51,25 @@ const hasNoResults = computed(() => key.value && groups.value.length === 0)
   </Modal>
   <Header @search="isSearchOpen = true" class="relative z-10" />
   <div class="py-10 md:py-20">
-    <transition>
+    <Container>
       <RouterView v-slot="{ Component }">
-        <component :is="Component"></component>
+        <transition name="fade" mode="out-in">
+          <component :is="Component"></component>
+        </transition>
       </RouterView>
-    </transition>
-
+    </Container>
   </div>
   <Footer class="relative z-10" />
 </template>
 
 <style scoped>
-.v-enter-active,
-.v-leave-active {
-  transition: all .5s ease;
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s ease;
 }
-
-.v-enter-from,
-.v-leave-to {
+.fade-enter-from,
+.fade-leave-to {
   opacity: 0;
-  transform: translateY(5px)
+  transform: translateY(5px);
 }
 </style>

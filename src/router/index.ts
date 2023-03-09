@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import GroupView from "../views/GroupView.vue";
-import ComponentsView from "../views/ComponentsView.vue";
-import PackageView from "../views/PackageView.vue";
-import QRCodeView from "../views/QRCode/QRCodeView.vue";
-import PasswordGeneratorView from "../views/Password/PasswordGeneratorView.vue";
-import SenteceGeneratorView from "../views/Sentence/SenteceGeneratorView.vue";
+import GroupView from "../views/UIComponent/GroupView.vue";
+import ComponentsView from "../views/UIComponent/ComponentsView.vue";
+import PackageView from "../views/UIComponent/PackageView.vue";
+import QRCodeView from "../views/QRCodeGenerator/QRCodeView.vue";
+import PasswordGeneratorView from "../views/PasswordGenerator/PasswordGeneratorView.vue";
+import SenteceGeneratorView from "../views/SentenceGenerator/SenteceGeneratorView.vue";
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

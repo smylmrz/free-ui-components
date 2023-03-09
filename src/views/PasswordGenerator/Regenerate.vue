@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import Refresh from "../../components/icons/Refresh.vue";
+import Refresh from "../../components/Icons/Refresh.vue";
 
 defineProps<{
   isGenerating: boolean

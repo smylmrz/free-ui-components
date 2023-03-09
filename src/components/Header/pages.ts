@@ -20,7 +20,6 @@ export const pages = <Page[]>[
             {
                 label: "QR Code Generator",
                 to: "/qr-code-generator",
-
             },
             {
                 label: "Sentence Generator",

@@ -1,5 +1,5 @@
 <template>
-  <Container>
+  <div>
     <div class="text-center space-y-5 mb-10 lg:mb-20">
       <h1 class="text-4xl md:text-5xl lg:text-6xl leading-tight lg:leading-tight font-extrabold">
         Random
@@ -39,16 +39,15 @@
     <button class="bg-gray-900 text-white rounded-md px-4 py-2" @click="generate">
       Regenerate
     </button>
-  </Container>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { useSentenceGenerator } from "./useSentenceGenerator";
-import { useCopyToClipBoard } from "../../utils/copy";
-import Container from "../../components/Component/Container.vue";
+import { useCopyToClipBoard } from "../../hooks/useCopyToClipBoard";
 import Btn from "../../components/Component/Btn.vue";
 import Tooltip from "../../components/Tooltip.vue";
-import CopyIcon from "../../components/icons/Copy.vue";
+import CopyIcon from "../../components/Icons/Copy.vue";
 
 const { sentence, sentenceAmount, paragraphAmount, generate } = useSentenceGenerator()
 const { copy, isCopying } = useCopyToClipBoard()

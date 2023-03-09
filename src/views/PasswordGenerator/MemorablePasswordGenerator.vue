@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { usePasswordGenerator } from "./usePasswordGenerator";
+import { usePasswordGenerator } from "../../hooks/usePasswordGenerator";
 import { watchEffect } from "vue";
 import Regenerate from "./Regenerate.vue";
 import GeneratedPassword from "./GeneratedPassword.vue";

@@ -1,4 +1,4 @@
-export interface Component {
+export interface UIComponent {
   id: number;
   groupId: number;
   name: string;

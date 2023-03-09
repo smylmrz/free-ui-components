@@ -1,8 +1,13 @@
+<template>
+  <div>
+    <ComponentGroup :group="group" />
+  </div>
+</template>
+
 <script lang="ts" setup>
-import { useGroups } from "../store/useGroups";
+import { useGroups } from "../../store/useGroups";
 import { useRoute } from "vue-router";
-import ComponentGroup from "../components/ComponentGroup.vue";
-import Container from "../components/Component/Container.vue";
+import ComponentGroup from "../../components/ComponentGroup.vue";
 import { ref, watchEffect } from "vue";
 
 const route = ref(useRoute());
@@ -13,10 +18,5 @@ const group = ref(getGroupBySlug(route.value.params.group as string))
 watchEffect(() => {
   group.value = getGroupBySlug(route.value.params.group as string)
 })
-
 </script>
-<template>
-  <Container>
-      <ComponentGroup :group="group" />
-  </Container>
-</template>
+

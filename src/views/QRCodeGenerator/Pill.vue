@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { QRCodeType } from "../views/QRCode/qrCodeTypes";
+import { QRCodeType } from "./qrCodeTypes";
 
 defineProps<{
   isActive: boolean;
