@@ -7,6 +7,7 @@ import QRCodeView from "../views/QRCodeGenerator/QRCodeView.vue";
 import PasswordGeneratorView from "../views/PasswordGenerator/PasswordGeneratorView.vue";
 import SentenceGeneratorView from "../views/SentenceGenerator/SentenceGeneratorView.vue";
 import NotFound from "../views/404.vue"
+import JSONFormatterViewVue from "../views/JSONFormatter/JSONFormatterView.vue";
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -44,6 +45,11 @@ export const router = createRouter({
       path: '/sentence-generator',
       name: 'sentence-generator',
       component: SentenceGeneratorView
+    },
+    {
+      path: "/json-formatter",
+      name: "json-formatter",
+      component: JSONFormatterViewVue
     },
     {
       path: '/:pathMatch(.*)',

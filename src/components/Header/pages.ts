@@ -27,4 +27,8 @@ export const pages = <Page[]>[
             }
         ]
     },
+    {
+        label: "JSON Formatter",
+        to: "/json-formatter",
+    },
 ]
