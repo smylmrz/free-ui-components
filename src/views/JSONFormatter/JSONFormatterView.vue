@@ -13,6 +13,9 @@
       </div>
       <div class="col-span-2">
         <div class="rounded-md flex flex-col items-center justify-center h-full p-5 bg-gray-100">
+          <select v-model="tabSpaces" class="border px-4 py-2 rounded-md">
+            <option v-for="space in availableTabs" :value="space" :key="space"> {{ space }} Tab Spaces</option>
+          </select>
           <CommonButton  @click="beautify" class="w-full justify-center mt-5">
             Beautify
           </CommonButton>
@@ -49,7 +52,8 @@ const {
   input,
   err,
   result,
-  tabs,
+  tabSpaces,
+  availableTabs,
   beautify,
   minify,
   clear

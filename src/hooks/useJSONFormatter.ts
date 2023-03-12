@@ -6,7 +6,8 @@ export const useJSONFormatter = () => {
     const input = ref("")
     const result = ref("")
     const formatType = ref<FormatType>("beautify")
-    const tabs = ref(2)
+    const tabSpaces = ref(2)
+    const availableTabs = [2,3,4]
     const err = ref()
 
     const clear = () => {
@@ -28,7 +29,7 @@ export const useJSONFormatter = () => {
 
         try {
             const jsonObj = JSON.parse(input.value);
-            result.value = JSON.stringify(jsonObj, null, tabs.value);
+            result.value = JSON.stringify(jsonObj, null, tabSpaces.value);
             console.error("Failed to format string as JSON:", err);
         } catch (error) {
             err.value = error;
@@ -63,11 +64,12 @@ export const useJSONFormatter = () => {
         input,
         result,
         formatType,
-        tabs,
+        tabSpaces,
         err,
         format,
         minify,
         beautify,
-        clear
+        clear,
+        availableTabs
     }
 }
