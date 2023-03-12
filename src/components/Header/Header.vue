@@ -1,25 +1,3 @@
-<script lang="ts" setup>
-import { ref } from "vue";
-import { pages } from "./pages";
-import NavLink from "./NavLink.vue";
-import Btn from "../Component/Btn.vue";
-import Search from "../Icons/Search.vue";
-import Hamburger from "../Icons/Hamburger.vue"
-import Logo from "./Logo.vue";
-import Container from "../Component/Container.vue";
-import Modal from "../Modal/Modal.vue";
-import SlideTransition from "../Modal/SlideTransition.vue";
-import Dropdown from "./Dropdown.vue";
-
-const emit = defineEmits<{(e: 'search'): void}>()
-
-const mobileMenuIsOpen = ref(false)
-
-const closeMobileMenu = () => {
-  mobileMenuIsOpen.value = false
-}
-</script>
-
 <template>
   <header v-bind="$attrs" class="py-3 sm:py-5">
     <Container>
@@ -90,3 +68,25 @@ const closeMobileMenu = () => {
     </SlideTransition>
   </Modal>
 </template>
+
+<script lang="ts" setup>
+import { ref } from "vue";
+import { pages } from "./pages";
+import NavLink from "./NavLink.vue";
+import Btn from "../Component/Btn.vue";
+import Search from "../Icons/Search.vue";
+import Hamburger from "../Icons/Hamburger.vue"
+import Logo from "./Logo.vue";
+import Container from "../Component/Container.vue";
+import Modal from "../Modal/Modal.vue";
+import SlideTransition from "../Modal/SlideTransition.vue";
+import Dropdown from "./Dropdown.vue";
+
+const emit = defineEmits<{(e: 'search'): void}>()
+
+const mobileMenuIsOpen = ref(false)
+
+const closeMobileMenu = () => {
+  mobileMenuIsOpen.value = false
+}
+</script>

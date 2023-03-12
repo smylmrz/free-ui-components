@@ -8,43 +8,45 @@
       </template>
     </Heading>
     <div class="p-5 bg-gray-100 grid grid-cols-12 gap-5 md:gap-10 rounded-md">
-      <div class="col-span-12 md:col-span-5">
+      <div class="col-span-12 md:col-span-10">
         <code>
           <textarea
               rows="20"
-              class="rounded-md p-2 w-full resize-none block border-4"
-              :class="notifierBorder"
-              v-model="input"
+              class="rounded-md p-2 w-full resize-none outline-none"
+              v-model="json"
+              placeholder="Paste JSON here..."
           />
         </code>
       </div>
       <div class="col-span-12 md:col-span-2">
         <div class="rounded-md flex flex-col items-center justify-center h-full p-5">
-          <select v-model="tabSpaces" class="border px-4 py-2 rounded-md">
+          <select v-model="tabSpaces" class="bg-gray-800 text-white border px-4 py-2 rounded-md">
             <option v-for="space in availableTabs" :value="space" :key="space"> {{ space }} Tab Spaces</option>
           </select>
           <div class="w-full border-t border-b border-gray-300 my-10 py-5 space-y-5">
-            <CommonButton  @click="beautify" class="w-full justify-center">
-              Beautify
+            <CommonButton center :disabled="!json" is-primary @click="beautify" class="w-full">
+                Beautify
             </CommonButton>
-            <CommonButton  @click="minify" class="w-full justify-center">
-              Minify
+            <CommonButton center :disabled="!json" is-primary @click="minify" class="w-full">
+                Minify
             </CommonButton>
-            <CommonButton  @click="validateJSON" class="w-full justify-center">
+            <CommonButton center :disabled="!json" @click="validateJSON" class="bg-green-500 hover:bg-green-600 w-full">
               Validate
             </CommonButton>
+            <CommonButton :disabled="!json" center class="w-full" @click="copyJSON">
+              <span>
+                Copy
+              </span>
+              <span class="relative">
+                <Tooltip v-if="isCopying" />
+                <CopyIcon :class="isCopying && '!stroke-sky-500 rotate-6 scale-125'" />
+              </span>
+            </CommonButton>
           </div>
-          <CommonButton  @click="clear" class="w-full justify-center">
+          <CommonButton :disabled="!json" @click="clear" class="w-full justify-center">
             Clear
           </CommonButton>
         </div>
-      </div>
-      <div class="col-span-12 md:col-span-5">
-        <textarea
-            rows="20"
-            v-model="result"
-            class="rounded-md resize-none p-2 w-full border-4 overflow-x-auto"
-        />
       </div>
     </div>
 
@@ -62,16 +64,18 @@
 
 <script lang="ts" setup>
 import { useJSONFormatter } from "../../hooks/useJSONFormatter";
+import { useCopyToClipBoard } from "../../hooks/useCopyToClipBoard";
 import CommonButton from "../../components/CommonButton.vue";
+import Tooltip from "../../components/Tooltip.vue";
+import CopyIcon from "../../components/Icons/Copy.vue";
 import AlertError from "../../components/Alerts/AlertError.vue";
 import Heading from "../../components/Heading.vue";
 import AlertSuccess from "../../components/Alerts/AlertSuccess.vue";
-import { computed } from "vue";
 
+const { copy, isCopying } = useCopyToClipBoard()
 const {
-  input,
+  json,
   message,
-  result,
   tabSpaces,
   availableTabs,
   beautify,
@@ -80,12 +84,6 @@ const {
   validateJSON
 } = useJSONFormatter()
 
-const notifierBorder = computed(() => {
-  if (!message.value){
-    return
-  }
-
-  return message.value?.type === "error" ? "border-red-500" : "border-green-300"
-})
+const copyJSON = () => copy(json.value)
 
 </script>

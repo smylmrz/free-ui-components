@@ -7,16 +7,14 @@ interface Message {
     body: any
 }
 export const useJSONFormatter = () => {
-    const input = ref("")
-    const result = ref("")
+    const json = ref("")
     const formatType = ref<FormatType>("beautify")
     const tabSpaces = ref(2)
     const availableTabs = [2,3,4]
     const message = ref<Message |null>()
 
     const clear = () => {
-        input.value = ''
-        result.value = ''
+        json.value = ''
         clearMessage()
     }
 
@@ -28,19 +26,23 @@ export const useJSONFormatter = () => {
         message.value = {
             type, body
         };
+
+        setTimeout(() => {
+            message.value = null
+        }, 5000)
     }
 
     const beautify = () => {
 
         clearMessage()
 
-        if (!input.value){
+        if (!json.value){
             return
         }
 
         try {
-            const jsonObj = JSON.parse(input.value);
-            result.value = JSON.stringify(jsonObj, null, tabSpaces.value);
+            const jsonObj = JSON.parse(json.value);
+            json.value = JSON.stringify(jsonObj, null, tabSpaces.value);
         } catch (error) {
             console.error("Failed to format string as JSON:", error);
 
@@ -52,12 +54,12 @@ export const useJSONFormatter = () => {
 
         clearMessage()
 
-        if (!input.value){
+        if (!json.value){
             return
         }
 
         try {
-            result.value = JSON.stringify(JSON.parse(input.value));
+            json.value = JSON.stringify(JSON.parse(json.value));
         } catch (error) {
             console.error("Failed to minify JSON:", error);
 
@@ -71,7 +73,7 @@ export const useJSONFormatter = () => {
 
     const validateJSON = () => {
         try {
-            JSON.parse(input.value);
+            JSON.parse(json.value);
             createMessage("success", "Valid JSON.")
         } catch (error) {
 
@@ -84,8 +86,7 @@ export const useJSONFormatter = () => {
     // })
 
     return {
-        input,
-        result,
+        json,
         formatType,
         tabSpaces,
         message,
