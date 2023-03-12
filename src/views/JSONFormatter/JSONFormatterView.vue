@@ -1,7 +1,11 @@
 <template>
   <div>
     <Heading>
-      JSON Formatter
+      <span class="text-blue-500">JSON</span> Formatter
+
+      <template #body>
+        <p class="text-lg md:text-xl lg:text-2xl text-gray-500 font-medium">Validator and formatter for JSON.</p>
+      </template>
     </Heading>
     <div class="p-5 bg-gray-100 grid grid-cols-12 gap-5 md:gap-10 rounded-md">
       <div class="col-span-12 md:col-span-5">
