@@ -2,26 +2,37 @@ import { ref } from "vue";
 
 export type FormatType = "beautify" | "minify"
 
+interface Message {
+    type: "error" | "success",
+    body: any
+}
 export const useJSONFormatter = () => {
     const input = ref("")
     const result = ref("")
     const formatType = ref<FormatType>("beautify")
     const tabSpaces = ref(2)
     const availableTabs = [2,3,4]
-    const err = ref()
+    const message = ref<Message |null>()
 
     const clear = () => {
         input.value = ''
         result.value = ''
+        clearMessage()
     }
 
-    const clearError = () => {
-        err.value = ''
+    const clearMessage = () => {
+        message.value = null
+    }
+
+    const createMessage = (type: "error" | "success", body: any) => {
+        message.value = {
+            type, body
+        };
     }
 
     const beautify = () => {
 
-        clearError()
+        clearMessage()
 
         if (!input.value){
             return
@@ -30,15 +41,16 @@ export const useJSONFormatter = () => {
         try {
             const jsonObj = JSON.parse(input.value);
             result.value = JSON.stringify(jsonObj, null, tabSpaces.value);
-            console.error("Failed to format string as JSON:", err);
         } catch (error) {
-            err.value = error;
+            console.error("Failed to format string as JSON:", error);
+
+            createMessage("error", error)
         }
     }
 
     const minify = () => {
 
-        clearError()
+        clearMessage()
 
         if (!input.value){
             return
@@ -48,12 +60,23 @@ export const useJSONFormatter = () => {
             result.value = JSON.stringify(JSON.parse(input.value));
         } catch (error) {
             console.error("Failed to minify JSON:", error);
-            err.value = error
+
+            createMessage("error", error)
         }
     }
 
     const format = () => {
         formatType.value === 'beautify' ? beautify() : minify()
+    }
+
+    const validateJSON = () => {
+        try {
+            JSON.parse(input.value);
+            createMessage("success", "Valid JSON.")
+        } catch (error) {
+
+            createMessage("error", "Invalid JSON.")
+        }
     }
 
     // watch([input], () => {
@@ -65,11 +88,12 @@ export const useJSONFormatter = () => {
         result,
         formatType,
         tabSpaces,
-        err,
+        message,
         format,
         minify,
         beautify,
         clear,
-        availableTabs
+        availableTabs,
+        validateJSON
     }
 }

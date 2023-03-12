@@ -8,8 +8,8 @@
         <code>
           <textarea
               rows="20"
-              class="w-full resize-none block border"
-              :class="err && 'border-red-500'"
+              class="rounded-md p-2 w-full resize-none block border-4"
+              :class="notifierBorder"
               v-model="input"
           />
         </code>
@@ -19,13 +19,18 @@
           <select v-model="tabSpaces" class="border px-4 py-2 rounded-md">
             <option v-for="space in availableTabs" :value="space" :key="space"> {{ space }} Tab Spaces</option>
           </select>
-          <CommonButton  @click="beautify" class="w-full justify-center mt-5">
-            Beautify
-          </CommonButton>
-          <CommonButton  @click="minify" class="w-full justify-center mt-5">
-            Minify
-          </CommonButton>
-          <CommonButton  @click="clear" class="w-full justify-center mt-5">
+          <div class="w-full border-t border-b border-gray-300 my-10 py-5 space-y-5">
+            <CommonButton  @click="beautify" class="w-full justify-center">
+              Beautify
+            </CommonButton>
+            <CommonButton  @click="minify" class="w-full justify-center">
+              Minify
+            </CommonButton>
+            <CommonButton  @click="validateJSON" class="w-full justify-center">
+              Validate
+            </CommonButton>
+          </div>
+          <CommonButton  @click="clear" class="w-full justify-center">
             Clear
           </CommonButton>
         </div>
@@ -34,14 +39,19 @@
         <textarea
             rows="20"
             v-model="result"
-            class="w-full border overflow-x-auto"
+            class="rounded-md resize-none p-2 w-full border-4 overflow-x-auto"
         />
       </div>
     </div>
 
-    <AlertError v-if="err">
-      {{ err }}
-    </AlertError>
+    <div class="mt-10" v-if="message">
+      <AlertSuccess v-if="message.type === 'success'">
+        {{ message.body }}
+      </AlertSuccess>
+      <AlertError v-else>
+        {{ message.body }}
+      </AlertError>
+    </div>
 
   </div>
 </template>
@@ -51,17 +61,27 @@ import { useJSONFormatter } from "../../hooks/useJSONFormatter";
 import CommonButton from "../../components/CommonButton.vue";
 import AlertError from "../../components/Alerts/AlertError.vue";
 import Heading from "../../components/Heading.vue";
+import AlertSuccess from "../../components/Alerts/AlertSuccess.vue";
+import { computed } from "vue";
 
 const {
   input,
-  err,
+  message,
   result,
   tabSpaces,
   availableTabs,
   beautify,
   minify,
-  clear
+  clear,
+  validateJSON
 } = useJSONFormatter()
 
+const notifierBorder = computed(() => {
+  if (!message.value){
+    return
+  }
+
+  return message.value?.type === "error" ? "border-red-500" : "border-green-300"
+})
 
 </script>
