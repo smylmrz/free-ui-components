@@ -1,56 +1,55 @@
-<script lang="ts" setup>
-import { useTabs } from "../store/useTabs";
-import { useGroups } from "../store/useGroups";
-import { ref, watchEffect } from "vue";
-import { Group } from "../models/Group";
-import CTA from "../components/CTA.vue";
-import Tab from "../components/Tab.vue";
-import GroupCard from "../components/GroupCard.vue";
-
-const { tabs, setCurrentTab, currentTab, isCurrentTab } = useTabs()
-const { getGroupsByPackage } = useGroups()
-
-const groups = ref<Group[]>([])
-
-watchEffect(() => {
-  groups.value = getGroupsByPackage(currentTab.value.id).slice(0, 12)
-})
-
-</script>
-
 <template>
-    <div>
-      <div class="relative">
-        <div class=" flex flex-col items-center text-center relative space-y-8 z-10">
-          <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold">
-            Build your next idea <br> even faster.
-          </h1>
-          <p class="md:text-lg max-w-lg text-slate-700">
-            Beautifully designed, expertly crafted components and templates, built by the makers of Tailwind CSS. The perfect starting point for your next project.
-          </p>
-          <CTA to="/components" type="primary">
-            Start exploring
-            <span class="hidden ml-1 text-slate-400 sm:inline">→</span>
-          </CTA>
-        </div>
+  <div>
+    <div class="relative flex flex-col items-center text-center relative space-y-8 z-10">
+      <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold">
+        Build your next idea <br> even faster.
+      </h1>
+      <p class="md:text-lg max-w-lg text-slate-700">
+        Beautifully designed, expertly crafted components and templates, built by the makers of Tailwind CSS. The perfect starting point for your next project.
+      </p>
+    </div>
+
+    <div class="mt-20 lg:mt-40 grid grid-cols-4 md:grid-cols-12 gap-10">
+
+      <div class="col-span-4 md:col-span-5">
+        <Card is-dark class="space-y-10">
+          <template #title>
+            Customizable components you can drop into your Tailwind projects
+          </template>
+          <RouterLink class="block text-blue-300 font-semibold" to="/components">
+            Browse all components
+            <span class="sm:inline">→</span>
+          </RouterLink>
+        </Card>
       </div>
 
-      <div class="py-20">
-        <div class="flex gap-5 border-t-2 border-slate-200">
-          <Tab
-              @click="setCurrentTab(tab)"
-              v-for="tab in tabs" :tab="tab" :key="tab.id"
-              :is-active="isCurrentTab(tab)"
-          />
-        </div>
+      <div class="col-span-4">
+        <Card class="space-y-10">
+          <template #title>
+            Various generators to help you save some time or become productive
+          </template>
+          <RouterLink class="block text-blue-500 font-semibold" to="/password-generator">
+            See all generators
+            <span class="sm:inline">→</span>
+          </RouterLink>
+        </Card>
       </div>
 
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
-        <GroupCard v-for="group in groups" :key="group.id" :group="group" />
-      </div>
-
-      <div class="max-w-fit mt-10 mx-auto">
-        <CTA type="primary" :to="`/${currentTab.slug}/${currentTab.id}`">Show all</CTA>
+      <div class="col-span-4 md:col-span-3">
+        <Card is-dark class="flex flex-col items-center justify-center !bg-blue-500 space-y-5">
+          <template #title>
+            Fake APIs
+          </template>
+          <span class="block text-blue-100 font-semibold">
+            Coming soon
+          </span>
+        </Card>
       </div>
     </div>
+  </div>
 </template>
+
+<script lang="ts" setup>
+import Card from "../components/Card.vue";
+
+</script>
