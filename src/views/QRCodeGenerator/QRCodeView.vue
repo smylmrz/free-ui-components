@@ -1,16 +1,16 @@
 <template>
    <div>
-      <div class="space-y-8 mb-10 lg:mb-20">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl leading-tight font-extrabold">
-          Generate your
-          <span class="text-blue-500">QR Code</span> instantly.
-        </h1>
-        <ul class="text-base md:text-xl list-disc ml-5 space-y-1 md:space-y-2">
-          <li>Create dynamic, editable QR codes</li>
-          <li>Access comprehensive analytics</li>
-          <li>Choose from a variety of designs</li>
-        </ul>
-      </div>
+     <Heading>
+       Generate your <span class="text-blue-500">QR Code</span> instantly.
+
+       <template #body>
+         <ul class="text-base md:text-xl list-disc ml-5 space-y-1 md:space-y-2">
+           <li>Create dynamic, editable QR codes</li>
+           <li>Access comprehensive analytics</li>
+           <li>Choose from a variety of designs</li>
+         </ul>
+       </template>
+     </Heading>
 
      <div class="flex gap-3 mb-5">
        <Pill
@@ -56,6 +56,7 @@ import vueQr from 'vue-qr/src/packages/vue-qr.vue'
 import Pill from "./Pill.vue";
 import html2canvas from 'html2canvas';
 import DownloadIcon from "../../components/Icons/Download.vue";
+import Heading from "../../components/Heading.vue";
 
 const text = ref(availableTypes[0].starter)
 const qrText = ref('')

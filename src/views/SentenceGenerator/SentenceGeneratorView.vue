@@ -1,11 +1,8 @@
 <template>
   <div>
-    <div class="text-center space-y-5 mb-10 lg:mb-20">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl leading-tight lg:leading-tight font-extrabold">
-        Random
-        <span class="text-blue-500">Sentence</span> Generator.
-      </h1>
-    </div>
+    <Heading class="text-center">
+      Random <span class="text-blue-500">Sentence</span> Generator.
+    </Heading>
 
     <div class="flex mb-5 justify-between gap-2">
       <div class="flex flex-col sm:flex-row gap-2">
@@ -48,6 +45,7 @@ import { useCopyToClipBoard } from "../../hooks/useCopyToClipBoard";
 import Btn from "../../components/Component/Btn.vue";
 import Tooltip from "../../components/Tooltip.vue";
 import CopyIcon from "../../components/Icons/Copy.vue";
+import Heading from "../../components/Heading.vue";
 
 const { sentence, sentenceAmount, paragraphAmount, generate } = useSentenceGenerator()
 const { copy, isCopying } = useCopyToClipBoard()
