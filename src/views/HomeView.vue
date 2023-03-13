@@ -51,5 +51,16 @@
 
 <script lang="ts" setup>
 import Card from "../components/Card.vue";
+import axios from "axios"
+import { ref } from "vue";
+const users = ref([])
 
+const getUsers = async () => {
+  const req = await axios('/http://127.0.0.1:3000/users')
+  users.value = await req.data
+
+  console.log(users.value)
+}
+
+getUsers()
 </script>
