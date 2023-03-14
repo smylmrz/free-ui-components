@@ -6,6 +6,7 @@ const port = 3000;
 
 app.get('/users', (req: Request, res: Response) => {
     res.header("Access-Control-Allow-Origin", "*");
+    const filters = req.query // todo: filter/pagination
     res.status(200).send(users)
 })
 
