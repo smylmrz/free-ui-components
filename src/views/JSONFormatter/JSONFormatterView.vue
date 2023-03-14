@@ -9,14 +9,7 @@
     </Heading>
     <div class="p-5 bg-gray-100 grid grid-cols-12 gap-5 md:gap-10 rounded-md">
       <div class="col-span-12 md:col-span-10">
-        <code>
-          <textarea
-              rows="20"
-              class="rounded-md p-2 w-full resize-none outline-none"
-              v-model="json"
-              placeholder="Paste JSON here..."
-          />
-        </code>
+        <CodePanel v-model="json" placeholder="Paste your JSON here..." />
       </div>
       <div class="col-span-12 md:col-span-2">
         <div class="rounded-md flex flex-col items-center justify-center h-full p-5">
@@ -71,6 +64,7 @@ import CopyIcon from "../../components/Icons/Copy.vue";
 import AlertError from "../../components/Alerts/AlertError.vue";
 import Heading from "../../components/Heading.vue";
 import AlertSuccess from "../../components/Alerts/AlertSuccess.vue";
+import CodePanel from "../../components/CodePanel.vue";
 
 const { copy, isCopying } = useCopyToClipBoard()
 const {
