@@ -4,14 +4,19 @@ import products from "./resources/products.json" assert { type: "json" };
 const app: Express = express()
 const port = 3000;
 
+app.use((req:Request, res:Response, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    next()
+})
+
 app.get('/users', (req: Request, res: Response) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    const filters = req.query // todo: filter/pagination
-    res.status(200).send(users)
+    let { skip, limit } = req.query
+    const skipCount = parseInt(skip as string)
+    const limitCount = parseInt(skip as string) + parseInt(limit as string)
+    res.status(200).send(users.slice(skipCount, limitCount))
 })
 
 app.get('/products', (req: Request, res: Response) => {
-    res.header("Access-Control-Allow-Origin", "*");
     res.status(200).send(products)
 })
 
