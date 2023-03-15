@@ -8,6 +8,7 @@ import SentenceGeneratorView from "../views/SentenceGenerator/SentenceGeneratorV
 import JSONFormatterViewVue from "../views/JSONFormatter/JSONFormatterView.vue";
 import NotFound from "../views/404.vue";
 import FakeApiView from "../views/FakeApiView.vue";
+import KeyCodeView from "../views/KeyCodeView/KeyCodeView.vue";
 
 export const routes = [
     {
@@ -54,6 +55,11 @@ export const routes = [
         path: "/fake-api",
         name: "fake-api",
         component: FakeApiView
+    },
+    {
+        path: "/key-code",
+        name: "key-code",
+        component: KeyCodeView
     },
     {
         path: '/:pathMatch(.*)',
