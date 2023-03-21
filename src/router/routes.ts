@@ -1,6 +1,5 @@
 import HomeView from "../views/HomeView.vue";
 import GroupView from "../views/UIComponent/GroupView.vue";
-import PackageView from "../views/UIComponent/PackageView.vue";
 import ComponentsView from "../views/UIComponent/ComponentsView.vue";
 import PasswordGeneratorView from "../views/PasswordGenerator/PasswordGeneratorView.vue";
 import QRCodeView from "../views/QRCodeGenerator/QRCodeView.vue";
@@ -17,19 +16,14 @@ export const routes = [
         component: HomeView,
     },
     {
-        path: "/:package/:category/:group",
-        name: "group",
-        component: GroupView,
-    },
-    {
-        path: "/:package/:packageId",
-        name: "package",
-        component: PackageView,
-    },
-    {
         path: "/components",
         name: "components",
         component: ComponentsView,
+    },
+    {
+        path: "/components/:group",
+        name: "group",
+        component: GroupView,
     },
     {
         path: '/password-generator',

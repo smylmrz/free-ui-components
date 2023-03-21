@@ -42,7 +42,7 @@
 <script setup lang="ts">
 import { useSentenceGenerator } from "./useSentenceGenerator";
 import { useCopyToClipBoard } from "../../hooks/useCopyToClipBoard";
-import Btn from "../../components/Component/Btn.vue";
+import Btn from "../../components/UIComponent/Btn.vue";
 import Tooltip from "../../components/Tooltip.vue";
 import CopyIcon from "../../components/Icons/Copy.vue";
 import Heading from "../../components/Heading.vue";
