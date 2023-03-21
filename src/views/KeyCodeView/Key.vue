@@ -1,6 +1,6 @@
 <template>
   <div
-      class="uppercase rounded-2xl h-44 w-44 text-6xl font-bold flex items-center justify-center shadow-xl border"
+      class="uppercase rounded-2xl h-44 min-w-[11rem] px-5 text-6xl font-bold flex items-center justify-center border"
       :class="customKeyClass"
   >
     {{ modifiedKey || pressedKey.key }}
@@ -16,12 +16,90 @@ const props = defineProps<{
 }>()
 
 const modifiedKey = ref('')
-const greyKeys = [
-  'ControlLeft', 'ControlRight', 'AltLeft', 'AltRight'
+const baseDarkClass = ref('')
+
+interface GreyKey {
+  code: string;
+  abr?: string;
+  class?: string
+}
+const greyKeys = <GreyKey[]>[
+  {
+    code: 'ControlLeft',
+    abr: 'CTRL',
+    class: '!w-60'
+  },
+  {
+    code: 'ControlRight',
+    abr: 'CTRL',
+    class: '!w-60'
+  },
+  {
+    code: 'AltLeft',
+  },
+  {
+    code: 'AltRight',
+  },
+  {
+    code: 'ShiftLeft',
+    class: '!w-96'
+  },
+  {
+    code: 'ShiftRight',
+    class: '!w-96'
+  },
+  {
+    code: 'Tab',
+  },
+  {
+    code: 'End',
+  },
+  {
+    code: 'Home',
+  },
+  {
+    code: 'CapsLock',
+    abr: 'Caps'
+  },
+  {
+    code: 'Backspace',
+  },
+  {
+    code: 'PageUp',
+    abr: 'pgup'
+  },
+  {
+    code: 'PageDown',
+    abr: 'pgdn'
+  },
+  {
+    code: 'Delete',
+    abr: 'del'
+  },
+  {
+    code: 'ArrowUp',
+    abr: '⌃'
+  },
+  {
+    code: 'ArrowDown',
+    abr: '⌃',
+    class: 'rotate-180'
+  },
+  {
+    code: 'ArrowLeft',
+    abr: '⌃',
+    class: '-rotate-90'
+  },
+  {
+    code: 'ArrowRight',
+    abr: '⌃',
+    class: 'rotate-90'
+  },
 ]
 
 const customKeyClass = computed(() => {
   modifiedKey.value = ''
+  baseDarkClass.value = 'bg-[#838A8C] text-white'
 
   if (props.pressedKey.code === 'Escape') {
     modifiedKey.value = 'ESC'
@@ -36,23 +114,24 @@ const customKeyClass = computed(() => {
     return 'bg-[#FEBE00] !w-2/3'
   }
 
-  if (greyKeys.includes(props.pressedKey.code)) {
+  if (greyKeys.filter(gk => gk.code === props.pressedKey.code).length > 0) {
+    greyKeys.forEach(gk => {
+      if(gk.code === props.pressedKey.code){
 
-    const baseClass = 'bg-[#838A8C] text-white'
+        if (gk.class){
+          baseDarkClass.value += ` ${gk.class}`
+        }
 
-    if (['ControlLeft', 'ControlRight'].includes(props.pressedKey.code)) {
-      modifiedKey.value = 'CTRL'
-      return `${baseClass} !w-60`
-    }
-    
+        if (gk.abr){
+          modifiedKey.value = gk.abr
+        }
+      }
+    })
+
+    return baseDarkClass.value
   }
 
-  if (['AltLeft', 'AltRight'].includes(props.pressedKey.code)) {
-    return 'bg-[#838A8C] text-white'
-  }
-
-  return 'bg-white text-neutral-500'
+  return 'bg-neutral-50 text-neutral-500'
 })
-
 
 </script>
