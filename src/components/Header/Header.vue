@@ -16,9 +16,6 @@
               <Dropdown v-if="page.subpages" :pages="page.subpages" />
             </li>
           </ul>
-          <Btn :is-active="false" class="!p-0">
-            <Search @click="emit('search')" />
-          </Btn>
           <Btn :is-active="false" class="!p-0 block sm:hidden">
             <Hamburger @click="mobileMenuIsOpen = true" />
           </Btn>
@@ -73,16 +70,13 @@
 import { ref } from "vue";
 import { pages } from "./pages";
 import NavLink from "./NavLink.vue";
-import Btn from "../Component/Btn.vue";
-import Search from "../Icons/Search.vue";
+import Btn from "../UIComponent/Btn.vue";
 import Hamburger from "../Icons/Hamburger.vue"
 import Logo from "./Logo.vue";
-import Container from "../Component/Container.vue";
+import Container from "../Container.vue";
 import Modal from "../Modal/Modal.vue";
 import SlideTransition from "../Modal/SlideTransition.vue";
 import Dropdown from "./Dropdown.vue";
-
-const emit = defineEmits<{(e: 'search'): void}>()
 
 const mobileMenuIsOpen = ref(false)
 

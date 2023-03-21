@@ -7,7 +7,7 @@
 <script lang="ts" setup>
 import { useGroups } from "../../store/useGroups";
 import { useRoute } from "vue-router";
-import ComponentGroup from "../../components/ComponentGroup.vue";
+import ComponentGroup from "../../components/UIComponent/ComponentGroup.vue";
 import { ref, watchEffect } from "vue";
 
 const route = ref(useRoute());

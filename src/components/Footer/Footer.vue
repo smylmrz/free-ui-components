@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Logo from "../Header/Logo.vue";
-import Container from "../Component/Container.vue";
+import Container from "../Container.vue";
 </script>
 
 <template>

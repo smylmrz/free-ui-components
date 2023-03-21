@@ -1,17 +1,3 @@
-<script lang="ts" setup>
-import { Group } from "../models/Group";
-import { RouterLink } from "vue-router";
-
-import { useGroups } from "../store/useGroups";
-
-const props = defineProps<{
-  group: Group;
-}>();
-const { generateGroupUrl, getComponentCount } = useGroups()
-const { url } = generateGroupUrl(props.group)
-const componentCount = getComponentCount(props.group.id)
-</script>
-
 <template>
   <RouterLink
     :to="url"
@@ -24,3 +10,17 @@ const componentCount = getComponentCount(props.group.id)
     <span class="text-xs font-semibold text-slate-500">{{ componentCount }} Components</span>
   </RouterLink>
 </template>
+
+<script lang="ts" setup>
+import { Group as GroupInterface } from "../../models/Group";
+import { RouterLink } from "vue-router";
+import { useGroups } from "../../store/useGroups";
+
+const props = defineProps<{
+  group: GroupInterface;
+}>();
+
+const { generateGroupUrl, getComponentCount } = useGroups()
+const { url } = generateGroupUrl(props.group)
+const componentCount = getComponentCount(props.group.id)
+</script>
