@@ -10,19 +10,14 @@
 <!--      </template>-->
     </Heading>
 
-    <div v-if="!pressedKey">
+    <div class="text-center" v-if="!pressedKey">
       Press any key to get the JavaScript event keycode info
     </div>
     <div v-else>
       <div class="mb-20 flex gap-10 items-center justify-center">
-        <div class="text-9xl font-bold">
-          {{ pressedKey.keyCode }}
-        </div>
-        <KeyComponent>
-          {{ pressedKey.key }}
-        </KeyComponent>
+        <KeyComponent :pressed-key="pressedKey"/>
       </div>
-      <div class="grid gap-10 grid-cols-12">
+      <div class="grid gap-10 grid-cols-3 md:grid-cols-12">
         <div class="col-span-3">
           <KeyCard>
             <template #title>
@@ -73,21 +68,14 @@ import { ref, onMounted } from "vue";
 import Heading from "../../components/Heading.vue";
 import KeyCard from "./KeyCard.vue";
 import KeyComponent from "./Key.vue";
+import { Key as KeyInterface } from "../../models/Key";
 
-interface Key {
-  key: string;
-  code: String;
-  keyCode: number;
-  which: number;
-  location: number;
-}
 
-const pressedKey = ref<Key | null>(null)
+const pressedKey = ref<KeyInterface | null>(null)
 
 onMounted(() => {
   window.addEventListener('keydown', (e) => {
     e.preventDefault()
-    console.log(e)
     pressedKey.value = {
       code: e.code,
       key: e.key,

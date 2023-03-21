@@ -1,9 +1,9 @@
 <template>
-  <div class="shadow rounded-md overflow-hidden">
-    <div class="bg-blue-500 text-white p-3 text-center">
+  <div class="overflow-hidden text-center space-y-10">
+    <div class="text-2xl">
       <slot name="title"></slot>
     </div>
-    <div class="px-3 h-40 font-medium text-xl flex items-center justify-center">
+    <div class="px-3 h-40 font-bold text-4xl">
       <slot name="body"></slot>
     </div>
   </div>
