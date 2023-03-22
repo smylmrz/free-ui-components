@@ -57,6 +57,7 @@ import Pill from "./Pill.vue";
 import html2canvas from 'html2canvas';
 import DownloadIcon from "../../components/Icons/Download.vue";
 import Heading from "../../components/Heading.vue";
+import {useHead} from "@vueuse/head";
 
 const text = ref(availableTypes[0].starter)
 const qrText = ref('')
@@ -89,4 +90,14 @@ const generate = async () => {
 }
 
 const isActive = (name) => name === qrType.value.name
+
+useHead({
+  title: 'QR Code Generator',
+  meta: [
+    {
+      name: 'description',
+      content: 'Create a dynamic, editable and downloadable QR codes in a blink.'
+    }
+  ]
+})
 </script>

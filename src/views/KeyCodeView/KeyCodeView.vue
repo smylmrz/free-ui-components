@@ -72,6 +72,7 @@ import Heading from "../../components/Heading.vue";
 import KeyCard from "./KeyCard.vue";
 import KeyComponent from "./Key.vue";
 import { Key as KeyInterface } from "../../models/Key";
+import { useHead } from "@vueuse/head";
 
 const pressedKey = ref<KeyInterface | null>(null)
 
@@ -103,5 +104,15 @@ const keyLocation = computed(() => {
     default:
       return 'General'
   }
+})
+
+useHead({
+  title: 'Javascript Key Code Previewer',
+  meta: [
+    {
+      name: 'description',
+      content: 'Preview Javascript Key Code with a beautiful UI.'
+    }
+  ]
 })
 </script>

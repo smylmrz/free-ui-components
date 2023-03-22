@@ -70,5 +70,15 @@
 <script lang="ts" setup>
 import Card from "../components/Card.vue";
 import Heading from "../components/Heading.vue";
+import { useHead } from "@vueuse/head";
 
+useHead({
+  title: 'Your One-Stop-Shop for Productivity',
+  meta: [
+    {
+      name: 'description',
+      content: 'Our tools are designed to enhance your productivity and efficiency, so you can focus on building amazing products without spending much time on dummy tasks.'
+    }
+  ]
+})
 </script>

@@ -26,6 +26,7 @@
 <script lang="ts" setup>
 import { computed, ref } from "vue";
 import { useGroups } from "../../store/useGroups";
+import { useHead } from "@vueuse/head";
 import ComponentGroup from "../../components/UIComponent/ComponentGroup.vue";
 import Search from "../../components/Icons/Search.vue";
 import Heading from "../../components/Heading.vue";
@@ -35,5 +36,15 @@ const { filterGroups } = useGroups()
 
 const filteredGroups = computed(() => {
   return filterGroups(key.value)
+})
+
+useHead({
+  title: 'Tailwind UI Components',
+  meta: [
+    {
+      name: 'description',
+      content: 'Beautifully designed, expertly crafted components. The perfect starting point for your next project.'
+    }
+  ]
 })
 </script>
