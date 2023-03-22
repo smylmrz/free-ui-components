@@ -65,6 +65,7 @@ import AlertError from "../../components/Alerts/AlertError.vue";
 import Heading from "../../components/Heading.vue";
 import AlertSuccess from "../../components/Alerts/AlertSuccess.vue";
 import CodePanel from "../../components/CodePanel.vue";
+import { useHead } from "@vueuse/head";
 
 const { copy, isCopying } = useCopyToClipBoard()
 const {
@@ -80,4 +81,13 @@ const {
 
 const copyJSON = () => copy(json.value)
 
+useHead({
+  title: 'JSON Validator and Formatter',
+  meta: [
+    {
+      name: 'description',
+      content: 'Easy-to-use JSON formatter and validator.'
+    }
+  ]
+})
 </script>

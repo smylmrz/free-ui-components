@@ -40,6 +40,7 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import { useHead } from "@vueuse/head";
 import { useCopyToClipBoard } from "../../hooks/useCopyToClipBoard"
 import { usePasswordGenerator } from "../../hooks/usePasswordGenerator";
 import { passwordInfo } from "./paswordInfo";
@@ -61,4 +62,13 @@ const {
 
 const copyPassword = () => copy(generatedPassword.value)
 
+useHead({
+  title: 'Random Password Generator',
+  meta: [
+    {
+      name: 'description',
+      content: 'Create a random to stay safe online.'
+    }
+  ]
+})
 </script>
