@@ -16,8 +16,12 @@
       </template>
     </Heading>
     <div class="grid grid-cols-4 md:grid-cols-12 gap-10">
-      <div v-for="group in filteredGroups" :key="group.id" class="col-span-4">
-        <ComponentGroup :group="group"/>
+      <div
+          v-for="group in filteredGroups"
+          :key="group.id"
+          class="col-span-4"
+      >
+        <ComponentGroup v-if="getComponentCount(group.id) > 0" :group="group"/>
       </div>
     </div>
   </div>
@@ -32,7 +36,7 @@ import Search from "../../components/Icons/Search.vue";
 import Heading from "../../components/Heading.vue";
 
 const key = ref('')
-const { filterGroups } = useGroups()
+const { filterGroups, getComponentCount } = useGroups()
 
 const filteredGroups = computed(() => {
   return filterGroups(key.value)

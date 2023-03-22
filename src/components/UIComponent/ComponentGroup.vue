@@ -7,7 +7,7 @@
       <img :src="group.previewSource" :alt="group.name" />
     </span>
     <h6 class="text-sm text-semibold">{{ group.name }}</h6>
-    <span class="text-xs font-semibold text-slate-500">{{ componentCount }} Components</span>
+<!--    <span class="text-xs font-semibold text-slate-500">{{ componentCount }} Components</span>-->
   </RouterLink>
 </template>
 
@@ -22,5 +22,4 @@ const props = defineProps<{
 
 const { generateGroupUrl, getComponentCount } = useGroups()
 const { url } = generateGroupUrl(props.group)
-const componentCount = getComponentCount(props.group.id)
 </script>

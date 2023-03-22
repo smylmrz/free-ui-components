@@ -644,6 +644,8 @@ export const useGroups = () => {
     const filterGroups = (name: string) => {
         return groups.value.filter((group) => {
             return group.name.toLowerCase().includes(name);
+        }).filter(group => {
+            return getComponentCount(group.id) > 0
         })
     }
 
