@@ -3,12 +3,12 @@
       class="p-10 rounded-3xl"
       :class="isDark ? 'bg-neutral-800' : 'bg-gray-100'"
   >
-    <h3
+    <div
         class="text-xl leading-normal md:text-2xl lg:text-3xl lg:leading-snug font-bold"
         :class="isDark && 'text-white'"
     >
       <slot name="title" />
-    </h3>
+    </div>
     <slot></slot>
   </div>
 </template>

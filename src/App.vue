@@ -23,7 +23,7 @@ import Container from "./components/Container.vue";
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.3s ease;
+  transition: all 0.2s;
 }
 .fade-enter-from,
 .fade-leave-to {

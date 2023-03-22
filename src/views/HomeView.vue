@@ -11,7 +11,7 @@
       </template>
     </Heading>
 
-    <div class="mt-20 lg:mt-40 grid grid-cols-4 md:grid-cols-12 gap-5 md:gap-10">
+    <div class="mt-20 lg:mt-40 grid grid-cols-4 md:grid-cols-12 gap-5">
 
       <div class="col-span-4 md:col-span-5">
         <RouterLink to="/components">
@@ -34,14 +34,13 @@
       </div>
 
       <div class="col-span-4 md:col-span-3">
-        <Card is-dark class="!bg-blue-500 space-y-5">
-          <template #title>
-            Fake APIs
-          </template>
-          <span class="block text-blue-100 font-semibold">
-            Coming soon
-          </span>
-        </Card>
+        <RouterLink to="/javascript-key-code-previewer">
+          <Card is-dark class="space-y-5">
+            <template #title>
+              Javascript Key Code Previewer
+            </template>
+          </Card>
+        </RouterLink>
       </div>
 
       <div class="col-span-4 md:col-span-3">
@@ -54,15 +53,7 @@
         </RouterLink>
       </div>
 
-      <div class="col-span-4">
-        <RouterLink to="/javascript-key-code-previewer">
-          <Card is-dark class="space-y-5">
-            <template #title>
-              Javascript Key Code Previewer
-            </template>
-          </Card>
-        </RouterLink>
-      </div>
+
     </div>
   </div>
 </template>
