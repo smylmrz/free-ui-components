@@ -1,7 +1,7 @@
 <template>
   <div>
     <Heading class="text-center">
-      Javascript <span class="text-blue-500">Key Code</span> Event Tool
+      Javascript <span class="text-blue-500">Key Code</span> Preview Tool
 
       <template #body>
         <p class="text-lg md:text-xl lg:text-2xl text-gray-500 font-medium">
@@ -10,14 +10,13 @@
       </template>
     </Heading>
 
-<!--    <div class="text-center text-xl" v-if="!pressedKey">-->
-<!--      Press any key to get the JavaScript event keycode info-->
-<!--    </div>-->
     <div v-if="pressedKey">
       <div class="mb-20 flex gap-10 items-center justify-center">
         <KeyComponent :pressed-key="pressedKey"/>
       </div>
-      <div class="border-t pt-20 grid gap-10 grid-cols-3 md:grid-cols-12">
+
+      <div class="border-t border-gray-100 pt-20 grid gap-10 grid-cols-3 md:grid-cols-12">
+
         <div class="col-span-3">
           <KeyCard>
             <template #title>
@@ -28,6 +27,7 @@
             </template>
           </KeyCard>
         </div>
+
         <div class="col-span-3">
           <KeyCard>
             <template #title>
@@ -38,6 +38,7 @@
             </template>
           </KeyCard>
         </div>
+
         <div class="col-span-3">
           <KeyCard>
             <template #title>
@@ -48,6 +49,7 @@
             </template>
           </KeyCard>
         </div>
+
         <div class="col-span-3">
           <KeyCard>
             <template #title>
@@ -58,6 +60,7 @@
             </template>
           </KeyCard>
         </div>
+
       </div>
     </div>
   </div>

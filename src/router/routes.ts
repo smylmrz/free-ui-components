@@ -51,8 +51,8 @@ export const routes = [
         component: FakeApiView
     },
     {
-        path: "/key-code",
-        name: "key-code",
+        path: "/javascript-key-code-previewer",
+        name: "javascript-key-code-previewer",
         component: KeyCodeView
     },
     {
