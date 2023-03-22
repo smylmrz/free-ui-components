@@ -31,6 +31,10 @@ export const pages = <Page[]>[
         label: "JSON Formatter",
         to: "/json-formatter",
     },
+    {
+        label: "Key Code",
+        to: "/javascript-key-code-previewer",
+    },
     // {
     //     label: "Fake APIs",
     //     to: "/fake-api",

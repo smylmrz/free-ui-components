@@ -55,14 +55,13 @@
       </div>
 
       <div class="col-span-4">
-        <Card is-dark class="space-y-5">
-          <template #title>
-            Javascript Key Code Previewer
-          </template>
-          <span class="block text-blue-100 font-semibold">
-            Coming soon
-          </span>
-        </Card>
+        <RouterLink to="/javascript-key-code-previewer">
+          <Card is-dark class="space-y-5">
+            <template #title>
+              Javascript Key Code Previewer
+            </template>
+          </Card>
+        </RouterLink>
       </div>
     </div>
   </div>
