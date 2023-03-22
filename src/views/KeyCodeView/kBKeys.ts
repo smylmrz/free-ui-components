@@ -12,7 +12,7 @@ export const kBKeys = <KBKey[]>[
     },
     {
         code: 'Enter',
-        class: 'bg-[#FF6832] px-20 md:px-40 text-white'
+        class: 'bg-[#FF6832] text-white px-20 md:px-40'
     },
     {
         code: 'Space',
@@ -21,96 +21,96 @@ export const kBKeys = <KBKey[]>[
     {
         code: 'ControlLeft',
         modifier: 'CTRL',
-        class: 'bg-[#838A8C] text-white w-32 md:w-60'
+        class: 'dark w-32 md:w-60'
     },
     {
         code: 'ControlRight',
         modifier: 'CTRL',
-        class: 'bg-[#838A8C] text-white w-432 md:w-60'
+        class: 'dark w-432 md:w-60'
     },
     {
         code: 'AltLeft',
-        class: 'bg-[#838A8C] text-white'
+        class: 'dark'
     },
     {
         code: 'AltRight',
-        class: 'bg-[#838A8C] text-white'
+        class: 'dark'
     },
     {
         code: 'ShiftLeft',
-        class: 'bg-[#838A8C] text-white w-80 md:w-96'
+        class: 'dark w-80 md:w-96'
     },
     {
         code: 'ShiftRight',
-        class: 'bg-[#838A8C] text-white w-80 md:w-96'
+        class: 'dark w-80 md:w-96'
     },
     {
         code: 'Tab',
-        class: 'bg-[#838A8C] text-white'
+        class: 'dark'
     },
     {
         code: 'End',
-        class: 'bg-[#838A8C] text-white'
+        class: 'dark'
     },
     {
         code: 'Home',
-        class: 'bg-[#838A8C] text-white'
+        class: 'dark px-5'
     },
     {
         code: 'CapsLock',
         modifier: 'Caps',
-        class: 'bg-[#838A8C] text-white'
+        class: 'dark px-10 md:px-20'
     },
     {
         code: 'Backspace',
-        class: 'bg-[#838A8C] text-white w-80 md:w-auto px-20'
+        class: 'dark w-80 md:w-auto px-20'
     },
     {
         code: 'MetaLeft',
-        class: 'bg-[#838A8C] text-white'
+        class: 'dark'
     },
     {
         code: 'MetaRight',
-        class: 'bg-[#838A8C] text-white'
+        class: 'dark'
     },
     {
         code: 'Backquote',
-        class: 'bg-[#838A8C] text-white'
+        class: 'dark'
     },
     {
         code: 'PageUp',
         modifier: 'pgup',
-        class: 'bg-[#838A8C] text-white'
+        class: 'dark px-5 '
     },
     {
         code: 'PageDown',
         modifier: 'pgdn',
-        class: 'bg-[#838A8C] text-white'
+        class: 'dark px-5 '
     },
     {
         code: 'Delete',
         modifier: 'del',
-        class: 'bg-[#838A8C] text-white'
+        class: 'dark '
     },
     {
         code: 'ArrowUp',
         modifier: '⌃',
-        class: 'bg-[#838A8C] text-white'
+        class: 'dark'
     },
     {
         code: 'ArrowDown',
         modifier: '⌃',
-        class: 'bg-[#838A8C] text-white rotate-180'
+        class: 'dark rotate-180'
     },
     {
         code: 'ArrowLeft',
         modifier: '⌃',
-        class: 'bg-[#838A8C] text-white -rotate-90'
+        class: 'dark -rotate-90'
     },
     {
         code: 'ArrowRight',
         modifier: '⌃',
-        class: 'bg-[#838A8C] text-white rotate-90'
+        class: 'dark rotate-90'
     },
     {
         code: "Digit0",

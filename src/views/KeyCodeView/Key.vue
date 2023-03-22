@@ -43,6 +43,10 @@ const customKeyClass = computed(() => {
 
 <style scoped>
 .digit {
-  @apply justify-start items-end text-neutral-500 p-7
+  @apply justify-start items-end text-neutral-500 p-7 bg-neutral-50
+}
+
+.dark {
+  @apply bg-[#838A8C] text-white
 }
 </style>

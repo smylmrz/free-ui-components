@@ -5,17 +5,22 @@
 
       <template #body>
         <p class="text-lg md:text-xl lg:text-2xl text-gray-500 font-medium">
-          Press any key and instantly get the JavaScript Key information.
+          <span class="text-red-500" v-if="isMobile">
+            This page does not work on mobile devices.
+          </span>
+          <span v-else>
+            Press any key and instantly get the JavaScript Key information.
+          </span>
         </p>
       </template>
     </Heading>
 
     <div v-if="pressedKey">
-      <div class="mb-20 flex gap-10 items-center justify-center">
+      <div class="mb-10 md:mb-20 flex gap-10 items-center justify-center">
         <KeyComponent :pressed-key="pressedKey"/>
       </div>
 
-      <div class="border-t border-gray-100 pt-20 grid gap-10 grid-cols-3 md:grid-cols-12">
+      <div class="border-t border-gray-100 pt-10 md:pt-20 grid gap-10 grid-cols-3 md:grid-cols-12">
 
         <div class="col-span-3">
           <KeyCard>
@@ -75,8 +80,15 @@ import { Key as KeyInterface } from "../../models/Key";
 import { useHead } from "@vueuse/head";
 
 const pressedKey = ref<KeyInterface | null>(null)
+const isMobile = ref(false)
 
 onMounted(() => {
+
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    isMobile.value = true
+    return
+  }
+
   window.addEventListener('keydown', (e) => {
     e.preventDefault()
     pressedKey.value = {
@@ -87,6 +99,7 @@ onMounted(() => {
       location: e.location,
     }
   })
+
 })
 
 const keyLocation = computed(() => {
